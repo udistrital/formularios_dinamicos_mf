@@ -7,6 +7,10 @@ export const routes: Routes = [
   {
     path: 'empty-route',
     component: EmptyRouteComponent
+  },
+  {
+    path: '',
+    loadChildren: () => import ('./formulario-dinamico/formulario-dinamico.module').then(m => m.FormularioDinamicoModule),
   }
 ];
 
