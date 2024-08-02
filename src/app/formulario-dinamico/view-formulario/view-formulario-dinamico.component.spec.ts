@@ -1,20 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CrudFormularioDinamicoComponent } from './crud-formulario-dinamico.component';
+import { ViewFormularioDinamicoComponent } from './view-formulario-dinamico.component';
 
-describe('CrudFormularioDinamicoComponent', () => {
-  let component: CrudFormularioDinamicoComponent;
-  let fixture: ComponentFixture<CrudFormularioDinamicoComponent>;
+describe('ViewFormularioDinamicoComponent', () => {
+  let component: ViewFormularioDinamicoComponent;
+  let fixture: ComponentFixture<ViewFormularioDinamicoComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CrudFormularioDinamicoComponent ],
+      declarations: [ ViewFormularioDinamicoComponent ],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrudFormularioDinamicoComponent);
+    fixture = TestBed.createComponent(ViewFormularioDinamicoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

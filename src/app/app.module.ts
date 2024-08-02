@@ -26,6 +26,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ParametrosService } from 'src/data/parametros.service';
 import { EmptyRouteComponent } from './empty-route/empty-route.component';
 import { SpinnerUtilInterceptor, SpinnerUtilModule } from 'spinner-util';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, environment.apiUrl + 'assets/i18n/', '.json');
@@ -62,6 +63,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
+    MatCheckboxModule,
     SpinnerUtilModule,
     TranslateModule.forRoot({
       loader: {

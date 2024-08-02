@@ -43,8 +43,10 @@ import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from 'ngx-fx-layout';
 import { FormularioDinamicoComponent } from './formulario-dinamico.component';
 import { FormularioDinamicoRoutingModule, routedComponents } from './formulario-dinamico-routing';
-import { CrudFormularioDinamicoComponent } from './crud-formulario-dinamico/crud.formulario-dinamico.component';
+import { CrudFormularioDinamicoComponent } from './crud-formulario-dinamico/crud-formulario-dinamico.component';
 import { ListFormularioDinamicoComponent } from './list-formulario-dinamico/list-formulario-dinamico.component';
+import { DynamicFormComponent } from '../component/dynamic-form/dynamic-form.component';
+import { DinamicFormGroupComponent } from '../component/dinamic-form-group/dinamic-form-group.component';
 
 @NgModule({
   imports: [
@@ -92,6 +94,7 @@ import { ListFormularioDinamicoComponent } from './list-formulario-dinamico/list
   ],
   declarations: [
     routedComponents,
+    DynamicFormComponent
   ],
   providers: [
     PopUpManager,
