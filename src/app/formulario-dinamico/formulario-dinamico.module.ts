@@ -46,7 +46,7 @@ import { FormularioDinamicoRoutingModule, routedComponents } from './formulario-
 import { CrudFormularioDinamicoComponent } from './crud-formulario-dinamico/crud-formulario-dinamico.component';
 import { ListFormularioDinamicoComponent } from './list-formulario-dinamico/list-formulario-dinamico.component';
 import { DynamicFormComponent } from '../component/dynamic-form/dynamic-form.component';
-import { DinamicFormGroupComponent } from '../component/dinamic-form-group/dinamic-form-group.component';
+import { FormularioDinamicoService } from 'src/data/formulario-dinamico.service';
 
 @NgModule({
   imports: [
@@ -99,6 +99,7 @@ import { DinamicFormGroupComponent } from '../component/dinamic-form-group/dinam
   providers: [
     PopUpManager,
     ParametrosService,
+    FormularioDinamicoService,
     {
       provide: MatPaginatorIntl,
       useClass: CustomMatPaginatorIntl

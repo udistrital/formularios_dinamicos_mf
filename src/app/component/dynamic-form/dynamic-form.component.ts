@@ -14,10 +14,12 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({});
-    this.formulario.campos.forEach(campo => {
-      console.log(campo.nombre);
-      const validators = this.getValidators(campo.validaciones);
-      this.form.addControl(campo.nombre, this.fb.control({ value: campo.valor, disabled: campo.deshabilitado }, validators));
+    this.formulario.secciones.forEach(seccion => {
+        seccion.campos.forEach(campo => {
+        //console.log(campo.nombre);
+        const validators = this.getValidators(campo.validaciones);
+        this.form.addControl(campo.nombre, this.fb.control({ value: campo.valor, disabled: campo.deshabilitado }, validators));
+      });
     });
   }
 
@@ -46,7 +48,7 @@ export class DynamicFormComponent implements OnInit {
         validators.push(Validators.email);
       }
     }
-    console.log(validators)
+    //console.log(validators)
     return validators;
   }
 
@@ -54,7 +56,7 @@ export class DynamicFormComponent implements OnInit {
     if (this.form.valid) {
       console.log('Form submitted', this.form.value);
     } else {
-      console.log('Form is invalid');
+      console.log('Form is invalid', this.form);
     }
   }
 }

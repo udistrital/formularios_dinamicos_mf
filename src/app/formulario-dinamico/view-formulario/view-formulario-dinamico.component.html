@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="formulario != null">
     <mat-card-title>Formulario Dinámico</mat-card-title>
     <mat-card-content>
       <dynamic-form [formulario]="formulario"></dynamic-form>
