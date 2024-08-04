@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GenericService } from 'src/data/generic.service';
 
 @Component({
   selector: 'dynamic-form',
@@ -10,7 +11,7 @@ export class DynamicFormComponent implements OnInit {
   @Input() formulario: any;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private genericService: GenericService) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({});
@@ -18,6 +19,12 @@ export class DynamicFormComponent implements OnInit {
         seccion.campos.forEach(campo => {
         const validators = this.getValidators(campo.validaciones);
         this.form.addControl(campo.nombre, this.fb.control({ value: campo.valor, disabled: campo.deshabilitado }, validators));
+
+        if (campo.tipo === 'select' && campo.url) {
+          this.genericService.getSelectOptions(campo.url).subscribe(options => {
+            campo.opciones = options;
+          });
+        }
       });
     });
   }

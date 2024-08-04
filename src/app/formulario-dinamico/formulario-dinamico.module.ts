@@ -47,6 +47,7 @@ import { CrudFormularioDinamicoComponent } from './crud-formulario-dinamico/crud
 import { ListFormularioDinamicoComponent } from './list-formulario-dinamico/list-formulario-dinamico.component';
 import { DynamicFormComponent } from '../component/dynamic-form/dynamic-form.component';
 import { FormularioDinamicoService } from 'src/data/formulario-dinamico.service';
+import { GenericService } from 'src/data/generic.service';
 
 @NgModule({
   imports: [
@@ -100,6 +101,7 @@ import { FormularioDinamicoService } from 'src/data/formulario-dinamico.service'
     PopUpManager,
     ParametrosService,
     FormularioDinamicoService,
+    GenericService,
     {
       provide: MatPaginatorIntl,
       useClass: CustomMatPaginatorIntl
