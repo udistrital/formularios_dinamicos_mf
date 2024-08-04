@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class CrudFormularioDinamicoComponent implements OnInit {
 
-    ngOnInit() {
+  ngOnInit() {
 
-    }
+  }
 }

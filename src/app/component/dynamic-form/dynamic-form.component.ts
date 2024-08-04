@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'dynamic-form',
@@ -16,7 +16,6 @@ export class DynamicFormComponent implements OnInit {
     this.form = this.fb.group({});
     this.formulario.secciones.forEach(seccion => {
         seccion.campos.forEach(campo => {
-        //console.log(campo.nombre);
         const validators = this.getValidators(campo.validaciones);
         this.form.addControl(campo.nombre, this.fb.control({ value: campo.valor, disabled: campo.deshabilitado }, validators));
       });
@@ -48,7 +47,6 @@ export class DynamicFormComponent implements OnInit {
         validators.push(Validators.email);
       }
     }
-    //console.log(validators)
     return validators;
   }
 
