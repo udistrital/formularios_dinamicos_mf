@@ -4,26 +4,26 @@ import { RequestManager } from '../app/managers/request-manager';
 @Injectable()
 export class ParametrosService {
 
-    constructor(private requestManager: RequestManager) {
-        this.requestManager.setPath('PARAMETROS_SERVICE');
-    }
-    get(endpoint: string) {
-        this.requestManager.setPath('PARAMETROS_SERVICE');
-        return this.requestManager.get(endpoint);
-    }
+  constructor(private requestManager: RequestManager) {
+    this.requestManager.setPath('PARAMETROS_SERVICE');
+  }
+  get(endpoint: string) {
+    this.requestManager.setPath('PARAMETROS_SERVICE');
+    return this.requestManager.get(endpoint);
+  }
 
-    post(endpoint: string, element: any) {
-        this.requestManager.setPath('PARAMETROS_SERVICE');
-        return this.requestManager.post(endpoint, element);
-    }
+  post(endpoint: string, element: any) {
+    this.requestManager.setPath('PARAMETROS_SERVICE');
+    return this.requestManager.post(endpoint, element);
+  }
 
-    put(endpoint: string, element: any) {
-        this.requestManager.setPath('PARAMETROS_SERVICE');
-        return this.requestManager.put(endpoint, element);
-    }
+  put(endpoint: string, element: any) {
+    this.requestManager.setPath('PARAMETROS_SERVICE');
+    return this.requestManager.put(endpoint, element);
+  }
 
-    delete(endpoint: string, element: any) {
-        this.requestManager.setPath('PARAMETROS_SERVICE');
-        return this.requestManager.delete(endpoint, element.Id);
-    }
+  delete(endpoint: string, element: any) {
+    this.requestManager.setPath('PARAMETROS_SERVICE');
+    return this.requestManager.delete(endpoint, element.Id);
+  }
 }

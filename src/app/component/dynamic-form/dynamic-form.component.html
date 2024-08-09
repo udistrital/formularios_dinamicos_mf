@@ -1,105 +1,118 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="example-form">
-  <div *ngFor="let campo of formulario.campos" [ngSwitch]="campo.tipo">
-    <!--<pre>
-      {{ campo | json }}
-    </pre>-->
-    <mat-form-field *ngSwitchCase="'text'" appearance="fill" class="example-full-width">
-      <mat-label>{{ campo.etiqueta }}</mat-label>
-      <input matInput [formControlName]="campo.nombre" [placeholder]="campo.placeholder"/>
-      <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
-        {{ campo.etiqueta }} es requerido
-      </mat-error>
-    </mat-form-field>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let seccion of formulario.secciones">
+      <mat-expansion-panel-header class="example-headers-align">
+        <mat-panel-title>
+          {{ seccion.nombre }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ seccion.descripcion }}
+          <mat-icon> {{seccion.icono}} </mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    <div *ngFor="let campo of seccion.campos" [ngSwitch]="campo.tipo">
+      <!--<pre>
+        {{ campo | json }}
+      </pre>-->
+      <mat-form-field *ngSwitchCase="'text'" appearance="fill" class="example-full-width">
+        <mat-label>{{ campo.etiqueta }}</mat-label>
+        <input matInput [formControlName]="campo.nombre" [placeholder]="campo.placeholder"/>
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
+          {{ campo.etiqueta }} es requerido
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field *ngSwitchCase="'email'" appearance="fill" class="example-full-width">
-      <mat-label>{{ campo.etiqueta }}</mat-label>
-      <input matInput type="email" [formControlName]="campo.nombre" [placeholder]="campo.placeholder"/>
-      <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
-        {{ campo.etiqueta }} es requerido
-      </mat-error>
-      @if (form.controls[campo.nombre].hasError('email') && !form.controls[campo.nombre].hasError('required')) {
-        <mat-error>{{ campo.etiqueta }} no tiene un formato válido</mat-error>
-      }
-    </mat-form-field>
+      <mat-form-field *ngSwitchCase="'email'" appearance="fill" class="example-full-width">
+        <mat-label>{{ campo.etiqueta }}</mat-label>
+        <input matInput type="email" [formControlName]="campo.nombre" [placeholder]="campo.placeholder"/>
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
+          {{ campo.etiqueta }} es requerido
+        </mat-error>
+        @if (form.controls[campo.nombre].hasError('email') && !form.controls[campo.nombre].hasError('required')) {
+          <mat-error>{{ campo.etiqueta }} no tiene un formato válido</mat-error>
+        }
+      </mat-form-field>
 
-    <mat-form-field *ngSwitchCase="'number'" appearance="fill" class="example-full-width">
-      <mat-label>{{ campo.etiqueta }}</mat-label>
-      <input matInput type="number" [formControlName]="campo.nombre" />
-      <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
-        {{ campo.etiqueta }} es requerido
-      </mat-error>
-      <mat-error *ngIf="form.controls[campo.nombre].hasError('min')">
-        {{ campo.etiqueta }} no puede ser menor que {{ campo.validaciones.min }}
-      </mat-error>
-      <mat-error *ngIf="form.controls[campo.nombre].hasError('max')">
-        {{ campo.etiqueta }} no puede ser mayor que {{ campo.validaciones.max }}
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field *ngSwitchCase="'number'" appearance="fill" class="example-full-width">
+        <mat-label>{{ campo.etiqueta }}</mat-label>
+        <input matInput type="number" [formControlName]="campo.nombre" />
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
+          {{ campo.etiqueta }} es requerido
+        </mat-error>
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('min')">
+          {{ campo.etiqueta }} no puede ser menor que {{ campo.validaciones.min }}
+        </mat-error>
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('max')">
+          {{ campo.etiqueta }} no puede ser mayor que {{ campo.validaciones.max }}
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field *ngSwitchCase="'select'" appearance="fill" class="example-full-width">
-      <mat-label>{{ campo.etiqueta }}</mat-label>
-      <mat-select [formControlName]="campo.nombre">
-        <mat-option *ngFor="let opcion of campo.opciones" [value]="opcion.valor" [disabled]="opcion.deshabilitado">
-          {{ opcion.etiqueta }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
-        {{ campo.etiqueta }} es requerido
-      </mat-error>
-    </mat-form-field>
-
-    <mat-checkbox *ngSwitchCase="'checkbox'" [formControlName]="campo.nombre" class="example-full-width">
-      {{ campo.etiqueta }}
-    </mat-checkbox>
-
-    <div *ngSwitchCase="'radiobutton'">
-      <label>{{ campo.etiqueta }}</label>
-      <mat-radio-group [formControlName]="campo.nombre">
-        <div *ngFor="let opcion of campo.opciones">
-          <mat-radio-button [value]="opcion.valor" [disabled]="opcion.deshabilitado">
+      <mat-form-field *ngSwitchCase="'select'" appearance="fill" class="example-full-width">
+        <mat-label>{{ campo.etiqueta }}</mat-label>
+        <mat-select [formControlName]="campo.nombre">
+          <mat-option *ngFor="let opcion of campo.opciones" [value]="opcion.valor" [disabled]="opcion.deshabilitado">
             {{ opcion.etiqueta }}
-          </mat-radio-button>
-        </div>
-      </mat-radio-group>
-      <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
-        {{ campo.etiqueta }} es requerido
-      </mat-error>
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
+          {{ campo.etiqueta }} es requerido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-checkbox *ngSwitchCase="'checkbox'" [formControlName]="campo.nombre" class="example-full-width">
+        {{ campo.etiqueta }}
+      </mat-checkbox>
+
+      <div *ngSwitchCase="'radiobutton'">
+        <label>{{ campo.etiqueta }}</label>
+        <mat-radio-group [formControlName]="campo.nombre">
+          <div *ngFor="let opcion of campo.opciones">
+            <mat-radio-button [value]="opcion.valor" [disabled]="opcion.deshabilitado">
+              {{ opcion.etiqueta }}
+            </mat-radio-button>
+          </div>
+        </mat-radio-group>
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
+          {{ campo.etiqueta }} es requerido
+        </mat-error>
+      </div>
+
+      <mat-form-field *ngSwitchCase="'date'" appearance="fill">
+        <mat-label>{{ campo.etiqueta }}</mat-label>
+        <input matInput [matDatepicker]="picker" [formControlName]="campo.nombre" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker [startView]="campo.vista != null ? campo.vista : 'month'" [startAt]="campo.fecha_inicio"></mat-datepicker>
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
+          {{ campo.etiqueta }} es requerido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field *ngSwitchCase="'date-range'" appearance="fill">
+        <mat-label>{{ campo.etiqueta }}</mat-label>
+        <mat-date-range-input [rangePicker]="pickerRange">
+          <input matStartDate [placeholder]="campo.etiqueta_inicio">
+          <input matEndDate [placeholder]="campo.etiqueta_fin">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerRange"></mat-datepicker-toggle>
+        <mat-date-range-picker #pickerRange></mat-date-range-picker>
+      </mat-form-field>
+
+      <mat-form-field *ngSwitchCase="'textarea'" appearance="fill">
+        <mat-label>{{ campo.etiqueta }}</mat-label>
+        <textarea matInput [formControlName]="campo.nombre"></textarea>
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
+          {{ campo.etiqueta }} es requerido
+        </mat-error>
+      </mat-form-field>
+
+      <!--<mat-divider *ngSwitchCase="'divider'"></mat-divider>
+
+      <mat-icon *ngSwitchCase="'icono'" aria-hidden="false" [aria-label]="campo.etiqueta" [fontIcon]="campo.icono"></mat-icon>-->
+
     </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 
-    <mat-form-field *ngSwitchCase="'date'" appearance="fill">
-      <mat-label>{{ campo.etiqueta }}</mat-label>
-      <input matInput [matDatepicker]="picker" [formControlName]="campo.nombre" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker [startView]="campo.vista != null ? campo.vista : 'month'"></mat-datepicker>
-      <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
-        {{ campo.etiqueta }} es requerido
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field *ngSwitchCase="'date-range'" appearance="fill">
-      <mat-label>{{ campo.etiqueta }}</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate [placeholder]="campo.etiqueta_inicio">
-        <input matEndDate [placeholder]="campo.etiqueta_fin">
-      </mat-date-range-input>
-      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </mat-form-field>
-
-    <mat-form-field *ngSwitchCase="'textarea'" appearance="fill">
-      <mat-label>{{ campo.etiqueta }}</mat-label>
-      <textarea matInput [formControlName]="campo.nombre"></textarea>
-      <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
-        {{ campo.etiqueta }} es requerido
-      </mat-error>
-    </mat-form-field>
-
-    <mat-divider *ngSwitchCase="'divider'"></mat-divider>
-
-    <mat-icon *ngSwitchCase="'icono'" aria-hidden="false" [aria-label]="campo.etiqueta" [fontIcon]="campo.icono"></mat-icon>
-
-  </div>
-
-  <button mat-raised-button type="submit" [disabled]="form.invalid">Enviar</button>
+  <button mat-raised-button type="submit">Enviar</button>
 </form>

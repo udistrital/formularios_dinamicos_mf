@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ListFormularioDinamicoComponent implements OnInit {
 
-    ngOnInit() {
+  ngOnInit() {
 
-    }
+  }
 }
