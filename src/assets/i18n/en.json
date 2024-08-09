@@ -1,0 +1,39 @@
+{
+    "GLOBAL": {
+        "guardar": "Save",
+        "regresar": "Go back",
+        "registrar": "Register",
+        "aceptar": "Accept",
+        "cancelar": "Cancel",
+        "formulario": "Form",
+        "lista": "List",
+        "buscar": "Search",
+        "descripcion": "Description",
+        "activo": "Active",
+        "inactivo": "Inactive",
+        "acciones": "Actions",
+        "atencion": "Atentión",
+        "err_min": "The value cannot be less than ",
+        "err_max": "The value cannot be greater than ",
+        "operacion_exitosa": "Successfull operation",
+        "codigo_abreviacion": "Abbreviation Code",
+        "placeholder_codigo_abreviacion": "E.g.: ACADE",
+        "error_codigo_abreviacion": "Please insert the abbreviation code",
+        "elementos": "Items per page",
+        "siguiente": "Next",
+        "previa": "Previos",
+        "primera": "First page",
+        "ultima": "Last page",
+        "nombre": "Name",
+        "editar": "Edit",
+        "eliminar": "Delete"
+    },
+    "paginator": {
+        "items_pagina": "Item per page"
+    },
+    "ERROR": {
+        "undefined": "An unexpected error has ocurred.",
+        "rol_insuficiente_titulo": "The user does not have permissions",
+        "rol_insuficiente": "The user does not have sufficient permissions to use the system ."
+    }
+}
