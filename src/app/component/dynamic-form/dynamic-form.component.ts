@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GenericService } from 'src/data/generic.service';
+import { Formulario } from 'src/data/models/formulario.model';
 
 @Component({
   selector: 'dynamic-form',
@@ -8,7 +9,7 @@ import { GenericService } from 'src/data/generic.service';
   styleUrls: ['./dynamic-form.component.scss']
 })
 export class DynamicFormComponent implements OnInit {
-  @Input() formulario: any;
+  @Input() formulario: Formulario;
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private genericService: GenericService) {}
