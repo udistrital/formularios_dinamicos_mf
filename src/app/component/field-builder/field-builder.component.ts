@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { TiposCampos } from 'src/data/models/tipos.model';
 
 @Component({
   selector: 'field-builder',
@@ -9,12 +10,38 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class FieldBuilderComponent implements OnInit {
   @Input() campoForm: FormGroup;
+  @Input() numero: number;
+
+  tiposCampos = TiposCampos.opciones;
+  agregarOpciones: boolean = false;
+  ingresarURL: boolean = false;
 
   constructor(private fb: FormBuilder, private translate: TranslateService) {}
 
   ngOnInit(): void {}
 
+  get opciones(): FormArray {
+    return this.campoForm.get('opciones') as FormArray;
+  }
+
   agregarOpcion() {
-    (this.campoForm.get('opciones') as FormArray).push(this.fb.control(''));
+    this.opciones.push(this.crearOpcion());
+  }
+
+  eliminarOpcion(index: number) {
+    this.opciones.removeAt(index);
+  }
+
+  crearOpcion(): FormGroup {
+    return this.fb.group({
+      valor: ['', Validators.required],
+      etiqueta: ['', Validators.required],
+      deshabilitado: [false]
+    });
+  }
+
+  onToggleChange(value: string) {
+    this.agregarOpciones = value === 'estaticas';
+    this.ingresarURL = value === 'dinamicas';
   }
 }

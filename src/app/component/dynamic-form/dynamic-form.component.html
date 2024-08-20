@@ -11,9 +11,6 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
     <div *ngFor="let campo of seccion.campos" [ngSwitch]="campo.tipo">
-      <!--<pre>
-        {{ campo | json }}
-      </pre>-->
       <mat-form-field *ngSwitchCase="'text'" appearance="fill" class="example-full-width">
         <mat-label>{{ campo.etiqueta }}</mat-label>
         <input matInput [formControlName]="campo.nombre" [placeholder]="campo.placeholder"/>

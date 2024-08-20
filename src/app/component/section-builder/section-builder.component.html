@@ -1,11 +1,11 @@
-<div class="form-group"  [formGroup]="seccionForm">
+<div class="form-group" [formGroup]="seccionForm">
   <mat-form-field class="form-field">
-    <mat-label>{{ "seccion.nombre" | translate }}</mat-label>
+    <mat-label>{{ "seccion.nombre" | translate: { numero: numero } }}</mat-label>
     <input matInput formControlName="nombre" [placeholder]="'seccion.placeholder_nombre' | translate">
   </mat-form-field>
 
   <mat-form-field class="form-field">
-    <mat-label>{{ "seccion.descripcion" | translate }}</mat-label>
+    <mat-label>{{ "seccion.descripcion" | translate: { numero: numero } }}</mat-label>
     <input matInput formControlName="descripcion" [placeholder]="'seccion.placeholder_descripcion' | translate">
   </mat-form-field>
 
@@ -13,10 +13,10 @@
     <div *ngFor="let campo of campos.controls; let i = index">
       <h5> {{ "campo.grupo" | translate: { numero: i + 1 } }} </h5>
 
-      <field-builder [campoForm]="campo"></field-builder>
+      <field-builder [campoForm]="campo" [numero]="i + 1"></field-builder>
       <button mat-raised-button color="warn" class="form-button" (click)="eliminarCampo(i)">
         <mat-icon>delete</mat-icon>
-        {{ "campo.eliminar" | translate }}
+        {{ "campo.eliminar" | translate: { numero: i + 1 } }}
       </button>
     </div>
 

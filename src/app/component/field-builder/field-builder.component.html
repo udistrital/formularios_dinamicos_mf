@@ -1,25 +1,67 @@
-<div class="form-group"  [formGroup]="campoForm">
+<div class="form-group" [formGroup]="campoForm">
   <mat-form-field class="form-field">
-    <mat-label>{{ "campo.nombre" | translate}}</mat-label>
+    <mat-label>{{ "campo.nombre" | translate: { numero: numero } }}</mat-label>
     <input matInput formControlName="nombre" [placeholder]="'campo.placeholder_nombre' | translate">
   </mat-form-field>
 
   <mat-form-field class="form-field">
-    <mat-label>{{ "campo.etiqueta" | translate}}</mat-label>
+    <mat-label>{{ "campo.etiqueta" | translate: { numero: numero } }}</mat-label>
     <input matInput formControlName="etiqueta" [placeholder]="'campo.placeholder_etiqueta' | translate">
   </mat-form-field>
 
   <mat-form-field class="form-field">
-    <mat-label>{{ "campo.tipo" | translate}}</mat-label>
+    <mat-label>{{ "campo.placeholder" | translate: { numero: numero } }}</mat-label>
+    <input matInput formControlName="placeholder" [placeholder]="'campo.placeholder_placeholder' | translate">
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>{{ "campo.tipo" | translate : { numero: numero } }}</mat-label>
     <mat-select formControlName="tipo">
-      <mat-option value="text">Texto</mat-option>
-      <mat-option value="email">Correo Electrónico</mat-option>
-      <mat-option value="number">Número</mat-option>
-      <mat-option value="select">Seleccionar</mat-option>
-      <mat-option value="checkbox">Checkbox</mat-option>
-      <mat-option value="radiobutton">Radiobutton</mat-option>
-      <mat-option value="date">Fecha</mat-option>
-      <mat-option value="textarea">Área de Texto</mat-option>
+      <mat-option *ngFor="let opcion of tiposCampos" [value]="opcion.value">
+        {{ opcion.label | translate }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <!-- Opciones para select o radiobutton -->
+  <div *ngIf="campoForm.get('tipo').value === 'select' || campoForm.get('tipo').value === 'radiobutton'">
+    {{ "campo.opciones" | translate }}
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup" (change)="onToggleChange(group.value)">
+      <mat-button-toggle value="estaticas">{{ "campo.estaticas" | translate }}</mat-button-toggle>
+      <mat-button-toggle value="dinamicas">{{ "campo.dinamicas" | translate }}</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <div *ngIf="agregarOpciones">
+      <div formArrayName="opciones">
+        <div *ngFor="let opcion of opciones.controls; let i = index" [formGroupName]="i" class="row">
+          <mat-form-field class="form-field">
+            <mat-label>{{ "campo.valor_opcion" | translate: { numero: i + 1 } }}</mat-label>
+            <input matInput formControlName="valor" [placeholder]="'campo.placeholder_valor_opcion' | translate: { numero: i + 1 }">
+          </mat-form-field>
+          <mat-form-field class="form-field">
+            <mat-label>{{ "campo.etiqueta_opcion" | translate: { numero: i + 1 } }}</mat-label>
+            <input matInput formControlName="etiqueta" [placeholder]="'campo.placeholder_etiqueta_opcion' | translate: { numero: i + 1 }">
+          </mat-form-field>
+          <mat-checkbox formControlName="deshabilitado">{{ "campo.deshabilitado_opcion" | translate: { numero: i + 1 } }}</mat-checkbox>
+
+          <button mat-raised-button color="warn" class="form-button" (click)="eliminarOpcion(i)">
+            <mat-icon>delete</mat-icon>
+            {{ "campo.eliminar_opcion" | translate: { numero: i + 1 } }}
+          </button>
+        </div>
+      </div>
+      <button mat-raised-button color="primary" (click)="agregarOpcion()">{{ "campo.agregar_opcion" | translate }}</button>
+    </div>
+
+    <div *ngIf="ingresarURL">
+      <mat-form-field class="form-field">
+        <mat-label>{{ "campo.url" | translate }}</mat-label>
+        <input matInput formControlName="url" [placeholder]="'campo.placeholder_url' | translate">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-checkbox formControlName="deshabilitado">{{ "campo.deshabilitado" | translate }}</mat-checkbox>
+
+  <validate-builder ></validate-builder>
 </div>

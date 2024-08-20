@@ -8,10 +8,10 @@
     <div *ngFor="let seccion of secciones.controls; let i = index">
       <h5> {{ "seccion.grupo" | translate: { numero: i + 1 } }} </h5>
 
-      <section-builder [seccionForm]="seccion"></section-builder>
+      <section-builder [seccionForm]="seccion" [numero]="i + 1"></section-builder>
       <button mat-raised-button color="warn" class="form-button" (click)="eliminarSeccion(i)">
         <mat-icon>delete</mat-icon>
-        {{ "seccion.eliminar" | translate }}
+        {{ "seccion.eliminar" | translate: { numero: i + 1 } }}
       </button>
       <mat-divider></mat-divider>
     </div>
@@ -22,6 +22,18 @@
   </div>
 
   <button mat-raised-button color="primary" class="form-button" (click)="guardarFormulario()">
-    {{ "seccion.guardar" | translate }}
+    {{ "formulario.guardar" | translate }}
+  </button>
+
+  <button mat-raised-button color="primary" class="form-button" (click)="previsualizarFormulario()">
+    <mat-icon>{{mostrarFormulario ? "visibility_off" : "visibility"}}</mat-icon>
+    {{ "formulario.previsualizar" | translate }}
   </button>
 </div>
+
+<mat-card *ngIf="formulario != null && mostrarFormulario">
+  <mat-card-title>{{ "formulario.titulo" | translate }}</mat-card-title>
+  <mat-card-content>
+    <dynamic-form [formulario]="formulario"></dynamic-form>
+  </mat-card-content>
+</mat-card>

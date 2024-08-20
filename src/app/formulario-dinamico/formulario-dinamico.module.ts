@@ -51,6 +51,7 @@ import { GenericService } from 'src/data/generic.service';
 import { FieldBuilderComponent } from '../component/field-builder/field-builder.component';
 import { SectionBuilderComponent } from '../component/section-builder/section-builder.component';
 import { FormBuilderComponent } from '../component/form-builder/form-builder.component';
+import { ValidateBuilderComponent } from '../component/validate-builder/validate-builder.component';
 
 @NgModule({
   imports: [
@@ -101,7 +102,8 @@ import { FormBuilderComponent } from '../component/form-builder/form-builder.com
     DynamicFormComponent,
     FieldBuilderComponent,
     SectionBuilderComponent,
-    FormBuilderComponent
+    FormBuilderComponent,
+    ValidateBuilderComponent
   ],
   providers: [
     PopUpManager,
