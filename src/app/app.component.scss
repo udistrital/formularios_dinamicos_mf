@@ -7,3 +7,17 @@
 body {
     background-color: black;
 }
+
+.form-field {
+    margin-bottom: 16px;
+}
+
+.form-button {
+    margin-top: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

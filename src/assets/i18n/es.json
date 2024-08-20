@@ -38,6 +38,33 @@
         "rol_insuficiente": "El usuario no cuenta con los permisos suficientes para usar el sistema."
     },
     "formulario": {
-        "titulo": "Formulario dinamico"
+        "titulo": "Formulario dinamico",
+        "creacion": "Crear nuevo formulario dinamico",
+        "nombre": "Nombre del Formulario",
+        "placeholder_nombre": "Ej: Registro de Usuarios"
+    },
+    "seccion": {
+        "eliminar": "Eliminar Sección",
+        "agregar": "Agregar Sección",
+        "guardar": "Guardar Formulario",
+        "grupo": "Sección {{numero}}",
+        "nombre": "Nombre de la Sección",
+        "placeholder_nombre": "Ej: Información Personal",
+        "descripcion": "Descripcion de la Sección",
+        "placeholder_descripcion": "Ej: Información Personal Del Usuario"
+    },
+    "campo": {
+        "nombre": "Nombre del Campo",
+        "placeholder_nombre": "Ej: nombreUsuario",
+        "etiqueta": "Etiqueta del Campo",
+        "placeholder_etiqueta": "Ej: usuario.nombre",
+        "tipo": "Tipo de Campo",
+        "valor_minimo": "Valor Mínimo",
+        "valor_maximo": "Valor Máximo",
+        "requerido": "Requerido",
+        "agregar_opcion": "Agregar Opción",
+        "grupo": "Campo {{numero}}",
+        "eliminar": "Eliminar Campo",
+        "agregar": "Agregar Campo"
     }
 }

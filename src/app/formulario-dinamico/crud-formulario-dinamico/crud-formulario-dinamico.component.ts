@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
     selector: 'crud-formulario-dinamico',
@@ -6,6 +7,10 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ['./crud-formulario-dinamico.component.scss'],
 })
 export class CrudFormularioDinamicoComponent implements OnInit {
+
+  constructor(private translate: TranslateService) {
+
+  }
 
   ngOnInit() {
 

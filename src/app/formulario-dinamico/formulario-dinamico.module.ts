@@ -48,6 +48,9 @@ import { ListFormularioDinamicoComponent } from './list-formulario-dinamico/list
 import { DynamicFormComponent } from '../component/dynamic-form/dynamic-form.component';
 import { FormularioDinamicoService } from 'src/data/formulario-dinamico.service';
 import { GenericService } from 'src/data/generic.service';
+import { FieldBuilderComponent } from '../component/field-builder/field-builder.component';
+import { SectionBuilderComponent } from '../component/section-builder/section-builder.component';
+import { FormBuilderComponent } from '../component/form-builder/form-builder.component';
 
 @NgModule({
   imports: [
@@ -95,7 +98,10 @@ import { GenericService } from 'src/data/generic.service';
   ],
   declarations: [
     routedComponents,
-    DynamicFormComponent
+    DynamicFormComponent,
+    FieldBuilderComponent,
+    SectionBuilderComponent,
+    FormBuilderComponent
   ],
   providers: [
     PopUpManager,
