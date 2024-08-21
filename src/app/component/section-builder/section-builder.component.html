@@ -1,0 +1,27 @@
+<div class="form-group"  [formGroup]="seccionForm">
+  <mat-form-field class="form-field">
+    <mat-label>{{ "seccion.nombre" | translate }}</mat-label>
+    <input matInput formControlName="nombre" [placeholder]="'seccion.placeholder_nombre' | translate">
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>{{ "seccion.descripcion" | translate }}</mat-label>
+    <input matInput formControlName="descripcion" [placeholder]="'seccion.placeholder_descripcion' | translate">
+  </mat-form-field>
+
+  <div formArrayName="campos">
+    <div *ngFor="let campo of campos.controls; let i = index">
+      <h5> {{ "campo.grupo" | translate: { numero: i + 1 } }} </h5>
+
+      <field-builder [campoForm]="campo"></field-builder>
+      <button mat-raised-button color="warn" class="form-button" (click)="eliminarCampo(i)">
+        <mat-icon>delete</mat-icon>
+        {{ "campo.eliminar" | translate }}
+      </button>
+    </div>
+
+    <button mat-raised-button color="primary" class="form-button" (click)="agregarCampo()">
+      {{ "campo.agregar" | translate }}
+    </button>
+  </div>
+</div>

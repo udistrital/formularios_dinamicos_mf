@@ -37,6 +37,33 @@
         "rol_insuficiente": "The user does not have sufficient permissions to use the system ."
     },
     "formulario": {
-        "titulo": "Dynamic form"
+        "titulo": "Dynamic form",
+        "creacion": "Create new Dynamic form",
+        "nombre": "Form name",
+        "placeholder_nombre": "Example: User Registration."
+    },
+    "seccion": {
+        "eliminar": "Delete section",
+        "agregar": "Add section",
+        "guardar": "Save section",
+        "grupo": "Section {{numero}}",
+        "nombre": "Section Name",
+        "placeholder_nombre": "Example: Personal Information",
+        "descripcion": "Section Description.",
+        "placeholder_descripcion": "Example: User's Personal Information."
+    },
+    "campo": {
+        "nombre": "Field name",
+        "placeholder_nombre": "Example: userName",
+        "etiqueta": "Field label",
+        "placeholder_etiqueta": "Example: usuario.nombre",
+        "tipo": "Field type",
+        "valor_minimo": "Min value",
+        "valor_maximo": "Max value",
+        "requerido": "Required",
+        "agregar_opcion": "Add option",
+        "grupo": "Field {{numero}}",
+        "eliminar": "Delete Field",
+        "agregar": "Add Field"
     }
 }

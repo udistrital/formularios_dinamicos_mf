@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { FormularioDinamicoService } from "src/data/formulario-dinamico.service";
+import { Formulario } from "src/data/models/formulario.model";
 
 @Component({
     selector: 'view-formulario-dinamico',
@@ -9,7 +10,7 @@ import { FormularioDinamicoService } from "src/data/formulario-dinamico.service"
 })
 export class ViewFormularioDinamicoComponent implements OnInit {
 
-  formulario: any;
+  formulario: Formulario;
 
   constructor(private formularioDinamicoService: FormularioDinamicoService,
     private translate: TranslateService) {

@@ -1,0 +1,25 @@
+<div class="form-group"  [formGroup]="campoForm">
+  <mat-form-field class="form-field">
+    <mat-label>{{ "campo.nombre" | translate}}</mat-label>
+    <input matInput formControlName="nombre" [placeholder]="'campo.placeholder_nombre' | translate">
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>{{ "campo.etiqueta" | translate}}</mat-label>
+    <input matInput formControlName="etiqueta" [placeholder]="'campo.placeholder_etiqueta' | translate">
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>{{ "campo.tipo" | translate}}</mat-label>
+    <mat-select formControlName="tipo">
+      <mat-option value="text">Texto</mat-option>
+      <mat-option value="email">Correo Electrónico</mat-option>
+      <mat-option value="number">Número</mat-option>
+      <mat-option value="select">Seleccionar</mat-option>
+      <mat-option value="checkbox">Checkbox</mat-option>
+      <mat-option value="radiobutton">Radiobutton</mat-option>
+      <mat-option value="date">Fecha</mat-option>
+      <mat-option value="textarea">Área de Texto</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
