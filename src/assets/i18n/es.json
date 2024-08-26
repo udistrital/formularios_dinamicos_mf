@@ -43,7 +43,8 @@
         "nombre": "Nombre del Formulario",
         "guardar": "Guardar Formulario",
         "placeholder_nombre": "Ej: Registro de Usuarios",
-        "previsualizar": "Previsualizar"
+        "previsualizar": "Previsualizar",
+        "ocultar": "Ocultar"
     },
     "seccion": {
         "eliminar": "Eliminar Sección {{numero}}",

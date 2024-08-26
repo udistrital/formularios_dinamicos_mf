@@ -21,7 +21,7 @@ export class DynamicFormComponent implements OnInit {
         const validators = this.getValidators(campo.validaciones);
         this.form.addControl(campo.nombre, this.fb.control({ value: campo.valor, disabled: campo.deshabilitado }, validators));
 
-        if (campo.tipo === 'select' && campo.url) {
+        if (campo.url) {
           this.genericService.getSelectOptions(campo.url).subscribe(options => {
             campo.opciones = options;
           });

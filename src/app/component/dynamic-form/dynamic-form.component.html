@@ -1,3 +1,5 @@
+<h3>{{ formulario.nombre }}</h3>
+
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="example-form">
   <mat-accordion>
     <mat-expansion-panel *ngFor="let seccion of formulario.secciones">
@@ -74,7 +76,7 @@
         </mat-error>
       </div>
 
-      <mat-form-field *ngSwitchCase="'date'" appearance="fill">
+      <mat-form-field *ngSwitchCase="'date'" appearance="fill" class="example-full-width">
         <mat-label>{{ campo.etiqueta }}</mat-label>
         <input matInput [matDatepicker]="picker" [formControlName]="campo.nombre" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -84,7 +86,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field *ngSwitchCase="'date-range'" appearance="fill">
+      <mat-form-field *ngSwitchCase="'date-range'" appearance="fill" class="example-full-width">
         <mat-label>{{ campo.etiqueta }}</mat-label>
         <mat-date-range-input [rangePicker]="pickerRange">
           <input matStartDate [placeholder]="campo.etiqueta_inicio">
@@ -95,7 +97,7 @@
         <mat-date-range-picker #pickerRange></mat-date-range-picker>
       </mat-form-field>
 
-      <mat-form-field *ngSwitchCase="'textarea'" appearance="fill">
+      <mat-form-field *ngSwitchCase="'textarea'" appearance="fill" class="example-full-width">
         <mat-label>{{ campo.etiqueta }}</mat-label>
         <textarea matInput [formControlName]="campo.nombre"></textarea>
         <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">

@@ -42,7 +42,8 @@
         "nombre": "Form name",
         "guardar": "Save form",
         "placeholder_nombre": "Example: User Registration.",
-        "previsualizar": "Preview"
+        "previsualizar": "Preview",
+        "ocultar": "Hide preview"
     },
     "seccion": {
         "eliminar": "Delete section {{numero}}",
