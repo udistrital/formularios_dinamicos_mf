@@ -11,6 +11,8 @@ import { Seccion } from 'src/data/models/seccion.model';
 })
 export class FormBuilderComponent implements OnInit {
   formularioForm: FormGroup;
+  formulario: Formulario;
+  mostrarFormulario: boolean = false;
 
   constructor(private fb: FormBuilder, private translate: TranslateService) {}
 
@@ -47,7 +49,15 @@ export class FormBuilderComponent implements OnInit {
   }
 
   guardarFormulario() {
-    const formulario: Formulario = this.formularioForm.value;
-    console.log('Formulario Guardado:', formulario);
+    const formularioValue: Formulario = this.formularioForm.value;
+    const jsonString = JSON.stringify(formularioValue);
+    this.formulario = JSON.parse(jsonString);
+    console.log('Formulario Guardado:', this.formulario);
+  }
+
+  previsualizarFormulario() {
+    if (this.formulario != null) {
+      this.mostrarFormulario = !this.mostrarFormulario;
+    }
   }
 }

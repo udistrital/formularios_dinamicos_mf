@@ -10,6 +10,7 @@ import { Campo } from 'src/data/models/campo.model';
 })
 export class SectionBuilderComponent implements OnInit {
   @Input() seccionForm: FormGroup;
+  @Input() numero: number;
 
   constructor(private fb: FormBuilder, private translate: TranslateService) {}
 
@@ -23,10 +24,12 @@ export class SectionBuilderComponent implements OnInit {
     const nuevoCampo: Campo = {
       nombre: '',
       etiqueta: '',
+      placeholder: '',
       tipo: 'text',
       validaciones: {},
       opciones: [],
-      deshabilitado: false
+      deshabilitado: false,
+      url: ''
     };
     (this.seccionForm.get('campos') as FormArray).push(this.crearCampoFormGroup(nuevoCampo));
   }
@@ -35,14 +38,12 @@ export class SectionBuilderComponent implements OnInit {
     return this.fb.group({
       nombre: [campo.nombre],
       etiqueta: [campo.etiqueta],
+      placeholder: [campo.placeholder],
       tipo: [campo.tipo],
       opciones: this.fb.array([]),
-      validaciones: this.fb.group({
-        required: [campo.validaciones?.required || false],
-        min: [campo.validaciones?.min || null],
-        max: [campo.validaciones?.max || null]
-      }),
-      deshabilitado: [campo.deshabilitado || false]
+      validaciones: this.fb.array([]),
+      deshabilitado: [campo.deshabilitado || false],
+      url: [campo.url]
     });
   }
 
