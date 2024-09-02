@@ -24,6 +24,10 @@ export class FieldBuilderComponent implements OnInit {
     return this.campoForm.get('opciones') as FormArray;
   }
 
+  get validaciones(): FormArray{
+    return this.campoForm.get('validaciones') as FormArray;
+  }
+
   agregarOpcion() {
     this.opciones.push(this.crearOpcion());
   }
@@ -43,5 +47,17 @@ export class FieldBuilderComponent implements OnInit {
   onToggleChange(value: string) {
     this.agregarOpciones = value === 'estaticas';
     this.ingresarURL = value === 'dinamicas';
+  }
+
+  agregarValidacion() {
+    this.validaciones.push(this.crearValidacion());
+  }
+
+  crearValidacion(): FormGroup {
+    return this.fb.group({
+      valor: ['', Validators.required],
+      etiqueta: ['', Validators.required],
+      deshabilitado: [false]
+    });
   }
 }

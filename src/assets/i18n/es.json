@@ -81,7 +81,9 @@
         "etiqueta_opcion": "Etiqueta opción {{numero}}",
         "placeholder_etiqueta_opcion": "opciones.valor_{{numero}}",
         "deshabilitado_opcion": "¿Deshabilitar opción {{numero}}?",
-        "eliminar_opcion": "Eliminar opción {{numero}}"
+        "eliminar_opcion": "Eliminar opción {{numero}}",
+        "agregar_validacion": "Agregar validation",
+        "eliminar_validacion": "eliminar validacion {{numero}}"
     },
     "tipos": {
         "text": "Texto",

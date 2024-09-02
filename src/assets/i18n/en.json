@@ -80,7 +80,9 @@
         "etiqueta_opcion": "Option Label",
         "placeholder_etiqueta_opcion": "opciones.valor_{{numero}}",
         "deshabilitado_opcion": "Disabled option {{numero}}?",
-        "eliminar_opcion": "Delete option {{numero}}"
+        "eliminar_opcion": "Delete option {{numero}}",
+        "agregar_validacion": "Add validation",
+        "eliminar_validacion": "Delete validation {{numero}}"
     },
     "tipos": {
         "text": "Text",
