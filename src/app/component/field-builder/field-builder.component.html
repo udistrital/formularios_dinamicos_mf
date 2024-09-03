@@ -26,7 +26,8 @@
   <!-- Opciones para select o radiobutton -->
   <div *ngIf="campoForm.get('tipo').value === 'select' || campoForm.get('tipo').value === 'radiobutton'">
     {{ "campo.opciones" | translate }}
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup" (change)="onToggleChange(group.value)">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup"
+      (change)="onToggleChange(group.value)">
       <mat-button-toggle value="estaticas">{{ "campo.estaticas" | translate }}</mat-button-toggle>
       <mat-button-toggle value="dinamicas">{{ "campo.dinamicas" | translate }}</mat-button-toggle>
     </mat-button-toggle-group>
@@ -36,13 +37,16 @@
         <div *ngFor="let opcion of opciones.controls; let i = index" [formGroupName]="i" class="row">
           <mat-form-field class="form-field">
             <mat-label>{{ "campo.valor_opcion" | translate: { numero: i + 1 } }}</mat-label>
-            <input matInput formControlName="valor" [placeholder]="'campo.placeholder_valor_opcion' | translate: { numero: i + 1 }">
+            <input matInput formControlName="valor"
+              [placeholder]="'campo.placeholder_valor_opcion' | translate: { numero: i + 1 }">
           </mat-form-field>
           <mat-form-field class="form-field">
             <mat-label>{{ "campo.etiqueta_opcion" | translate: { numero: i + 1 } }}</mat-label>
-            <input matInput formControlName="etiqueta" [placeholder]="'campo.placeholder_etiqueta_opcion' | translate: { numero: i + 1 }">
+            <input matInput formControlName="etiqueta"
+              [placeholder]="'campo.placeholder_etiqueta_opcion' | translate: { numero: i + 1 }">
           </mat-form-field>
-          <mat-checkbox formControlName="deshabilitado">{{ "campo.deshabilitado_opcion" | translate: { numero: i + 1 } }}</mat-checkbox>
+          <mat-checkbox formControlName="deshabilitado">{{ "campo.deshabilitado_opcion" | translate: { numero: i + 1 }
+            }}</mat-checkbox>
 
           <button mat-raised-button color="warn" class="form-button" (click)="eliminarOpcion(i)">
             <mat-icon>delete</mat-icon>
@@ -50,7 +54,8 @@
           </button>
         </div>
       </div>
-      <button mat-raised-button color="primary" (click)="agregarOpcion()">{{ "campo.agregar_opcion" | translate }}</button>
+      <button mat-raised-button color="primary" (click)="agregarOpcion()">{{ "campo.agregar_opcion" | translate
+        }}</button>
     </div>
 
     <div *ngIf="ingresarURL">
@@ -68,6 +73,7 @@
   </button>
 
   <div *ngFor="let validacion of validaciones.controls; let i = index">
+    <p>validacion</p>
     <validate-builder [validateForm]="validacion" [numero]="i + 1"></validate-builder>
   </div>
 </div>

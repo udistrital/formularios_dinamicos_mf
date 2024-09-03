@@ -31,6 +31,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   getValidators(validaciones): any[] {
+    validaciones = validaciones[0]
     const validators = [];
     if (validaciones) {
       if (validaciones.requerido) {

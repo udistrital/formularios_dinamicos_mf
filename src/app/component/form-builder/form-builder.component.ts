@@ -52,6 +52,7 @@ export class FormBuilderComponent implements OnInit {
     const formularioValue: Formulario = this.formularioForm.value;
     const jsonString = JSON.stringify(formularioValue);
     this.formulario = JSON.parse(jsonString);
+    console.log(this.formulario)
     console.log('Formulario Guardado:', this.formulario);
   }
 

@@ -21,10 +21,14 @@ export class FieldBuilderComponent implements OnInit {
   ngOnInit(): void {}
 
   get opciones(): FormArray {
+    console.log('salida de opciones')
+    console.log(this.campoForm.get('opciones') as FormArray)
     return this.campoForm.get('opciones') as FormArray;
   }
 
   get validaciones(): FormArray{
+    console.log('validaciones')
+    console.log(this.campoForm)
     return this.campoForm.get('validaciones') as FormArray;
   }
 
@@ -55,9 +59,8 @@ export class FieldBuilderComponent implements OnInit {
 
   crearValidacion(): FormGroup {
     return this.fb.group({
-      valor: ['', Validators.required],
-      etiqueta: ['', Validators.required],
-      deshabilitado: [false]
+      min: 12,
+      max: 18
     });
   }
 }
