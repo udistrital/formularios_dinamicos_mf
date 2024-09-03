@@ -19,6 +19,12 @@
         <mat-error *ngIf="form.controls[campo.nombre].hasError('required')">
           {{ campo.etiqueta }} es requerido
         </mat-error>
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('minLength')">
+          {{ campo.etiqueta }} no puede ser menor a {{ campo.validaciones.min }} caracteres
+        </mat-error>
+        <mat-error *ngIf="form.controls[campo.nombre].hasError('maxLength')">
+          {{ campo.etiqueta }} no puede ser mayor a {{ campo.validaciones.min }} caracteres
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field *ngSwitchCase="'email'" appearance="fill" class="example-full-width">

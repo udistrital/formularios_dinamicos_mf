@@ -80,9 +80,7 @@
         "etiqueta_opcion": "Option Label",
         "placeholder_etiqueta_opcion": "opciones.valor_{{numero}}",
         "deshabilitado_opcion": "Disabled option {{numero}}?",
-        "eliminar_opcion": "Delete option {{numero}}",
-        "agregar_validacion": "Add validation",
-        "eliminar_validacion": "Delete validation {{numero}}"
+        "eliminar_opcion": "Delete option {{numero}}"
     },
     "tipos": {
         "text": "Text",
@@ -95,5 +93,17 @@
         "textarea": "Textarea",
         "date-range": "Date Range",
         "icono": "Icon"
+    },
+    "validacion": {
+        "agregar_validacion": "Add validation",
+        "eliminar_validacion": "Delete validation {{numero}}",
+        "placeholder_valor_opcion": "Validation value",
+        "tipo_validacion": "Validation tipe",
+        "requerido":"Is required",
+        "minLength":"Minimun length",
+        "maxLength": "Maximun length",
+        "min": "Minimun numeric value",
+        "max": "Maximum numeric value",
+        "email": "Tipe email"
     }
 }

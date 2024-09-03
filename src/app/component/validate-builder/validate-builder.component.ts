@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
+import { TiposValidaciones } from "src/data/models/validaciones.model";
 
 @Component({
   selector: 'validate-builder',
@@ -12,6 +13,7 @@ export class ValidateBuilderComponent implements OnInit {
   @Input() numero: number;
 
   agregarValidaciones: boolean = false;
+  tiposValidaciones = TiposValidaciones.opciones
 
   constructor(private fb: FormBuilder, private translate: TranslateService) { }
 
@@ -31,8 +33,8 @@ export class ValidateBuilderComponent implements OnInit {
 
   crearValidacion(): FormGroup {
     return this.fb.group({
-      min: 0,
-      max: 0
+      tipo: '',
+      valor: ''
     });
   }
 
