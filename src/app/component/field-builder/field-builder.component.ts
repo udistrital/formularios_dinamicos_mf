@@ -26,20 +26,15 @@ export class FieldBuilderComponent implements OnInit {
     return this.campoForm.get('opciones') as FormArray;
   }
 
-  get validaciones(): FormArray{
-    console.log('validaciones')
-    console.log(this.campoForm)
-    return this.campoForm.get('validaciones') as FormArray;
-  }
-
+  
   agregarOpcion() {
     this.opciones.push(this.crearOpcion());
   }
-
+  
   eliminarOpcion(index: number) {
     this.opciones.removeAt(index);
   }
-
+  
   crearOpcion(): FormGroup {
     return this.fb.group({
       valor: ['', Validators.required],
@@ -47,20 +42,10 @@ export class FieldBuilderComponent implements OnInit {
       deshabilitado: [false]
     });
   }
-
+  
   onToggleChange(value: string) {
     this.agregarOpciones = value === 'estaticas';
     this.ingresarURL = value === 'dinamicas';
   }
-
-  agregarValidacion() {
-    this.validaciones.push(this.crearValidacion());
-  }
-
-  crearValidacion(): FormGroup {
-    return this.fb.group({
-      min: 12,
-      max: 18
-    });
-  }
+  
 }

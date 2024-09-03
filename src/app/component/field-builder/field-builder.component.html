@@ -68,12 +68,6 @@
 
   <mat-checkbox formControlName="deshabilitado">{{ "campo.deshabilitado" | translate }}</mat-checkbox>
 
-  <button mat-raised-button color="primary" class="form-button" (click)="agregarValidacion()">
-    {{ "campo.agregar_validacion" | translate }}
-  </button>
+  <validate-builder [validateForm]="campoForm"></validate-builder>
 
-  <div *ngFor="let validacion of validaciones.controls; let i = index">
-    <p>validacion</p>
-    <validate-builder [validateForm]="validacion" [numero]="i + 1"></validate-builder>
-  </div>
 </div>

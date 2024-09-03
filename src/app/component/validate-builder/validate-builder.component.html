@@ -1,5 +1,28 @@
 <div class="form-group" [formGroup]="validateForm">
-    <div formArrayName="validaciones">
-        <p>validación</p>
+
+    <button mat-raised-button color="primary" class="form-button" (click)="agregarValidacion()">
+        {{ "campo.agregar_validacion" | translate }}
+    </button>
+
+    <div *ngIf="agregarValidaciones">
+        <div formArrayName="validaciones">
+            <div *ngFor="let validacion of validaciones.controls; let i = index" [formGroupName]="i" class="row">
+                <mat-form-field class="form-field">
+                    <mat-label>Validacion Min: {{numero}}</mat-label>
+                    <input matInput formControlName="min"
+                        [placeholder]="'campo.placeholder_valor_opcion' | translate: { numero }">
+                </mat-form-field>
+                <mat-form-field class="form-field">
+                    <mat-label>Validacion max {{numero}}</mat-label>
+                    <input matInput formControlName="max"
+                        [placeholder]="'campo.placeholder_etiqueta_opcion' | translate: { numero}">
+                </mat-form-field>
+
+                <button mat-raised-button color="warn" class="form-button" (click)="eliminarValidacion(i)">
+                    <mat-icon>delete</mat-icon>
+                    {{ "campo.eliminar_opcion" | translate: { numero: i + 1 } }}
+                </button>
+            </div>
+        </div>
     </div>
 </div>
