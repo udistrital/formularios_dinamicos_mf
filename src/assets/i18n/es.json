@@ -94,5 +94,17 @@
         "textarea": "Área de Texto",
         "date-range": "Rango de fechas",
         "icono": "Icono"
+    },
+    "validacion": {
+        "placeholder_valor_opcion": "Valor validación",
+        "tipo_validacion": "Tipo validación",
+        "agregar_validacion": "Agregar validación",
+        "eliminar_validacion": "Eliminar validación {{numero}}",
+        "requerido":"Es requerido",
+        "minLength":"Longitud mínima",
+        "maxLength": "Longitud máxima",
+        "min": "Valor númerico mínimo",
+        "max": "Valor númerico máximo",
+        "email": "Tipo correo"
     }
 }

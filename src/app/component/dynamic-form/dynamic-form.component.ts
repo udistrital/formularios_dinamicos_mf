@@ -31,30 +31,35 @@ export class DynamicFormComponent implements OnInit {
   }
 
   getValidators(validaciones): any[] {
+    console.log(validaciones)
     const validators = [];
-    if (validaciones) {
-      if (validaciones.requerido) {
-        validators.push(Validators.required);
+    validaciones.forEach((validacion => {
+      if (validacion) {
+        if (validacion.tipo == 'requerido') {
+          validators.push(Validators.required);
+        }
+        if (validacion.tipo == 'minLength') {
+          validators.push(Validators.minLength(validacion.valor));
+        }
+        if (validacion.tipo == 'maxLength') {
+          validators.push(Validators.maxLength(validacion.valor));
+        }
+        if (validacion.tipo == 'patron') {
+          validators.push(Validators.pattern(validacion.valor));
+        }
+        if (validacion.tipo == 'min') {
+          validators.push(Validators.min(validacion.valor));
+        }
+        if (validacion.tipo == 'max') {
+          validators.push(Validators.max(validacion.valor));
+        }
+        if (validacion.tipo == 'email') {
+          validators.push(Validators.email);
+        }
       }
-      if (validaciones.minLength) {
-        validators.push(Validators.minLength(validaciones.minLength));
-      }
-      if (validaciones.maxLength) {
-        validators.push(Validators.maxLength(validaciones.maxLength));
-      }
-      if (validaciones.patron) {
-        validators.push(Validators.pattern(validaciones.patron));
-      }
-      if (validaciones.min) {
-        validators.push(Validators.min(validaciones.min));
-      }
-      if (validaciones.max) {
-        validators.push(Validators.max(validaciones.max));
-      }
-      if (validaciones.email) {
-        validators.push(Validators.email);
-      }
-    }
+    }))
+
+    
     return validators;
   }
 

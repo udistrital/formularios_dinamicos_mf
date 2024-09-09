@@ -93,5 +93,17 @@
         "textarea": "Textarea",
         "date-range": "Date Range",
         "icono": "Icon"
+    },
+    "validacion": {
+        "agregar_validacion": "Add validation",
+        "eliminar_validacion": "Delete validation {{numero}}",
+        "placeholder_valor_opcion": "Validation value",
+        "tipo_validacion": "Validation tipe",
+        "requerido":"Is required",
+        "minLength":"Minimun length",
+        "maxLength": "Maximun length",
+        "min": "Minimun numeric value",
+        "max": "Maximum numeric value",
+        "email": "Tipe email"
     }
 }

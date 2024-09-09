@@ -1,1 +1,30 @@
-<p> Validaciones </p>
+<div class="form-group" [formGroup]="validateForm">
+    <div *ngIf="agregarValidaciones">
+        <div formArrayName="validaciones">
+            <div *ngFor="let validacion of validaciones.controls; let i = index" [formGroupName]="i" class="row">
+                <mat-form-field class="form-field">
+                    <mat-label> {{ "validacion.tipo_validacion" | translate: { numero: i + 1 } }}</mat-label>
+                    <mat-select formControlName="tipo">
+                        <mat-option *ngFor="let opcion of tiposValidaciones" [value]="opcion.value">
+                          {{ opcion.label | translate }}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="validacion.value.tipo != 'requerido' && validacion.tipo != 'email'" class="form-field">
+                    <mat-label>Valor {{numero}}</mat-label>
+                    <input matInput formControlName="valor"
+                        [placeholder]="'validacion.placeholder_valor_opcion' | translate: { numero}">
+                </mat-form-field>
+
+                <button mat-raised-button color="warn" class="form-button" (click)="eliminarValidacion(i)">
+                    <mat-icon>delete</mat-icon>
+                    {{ "validacion.eliminar_validacion" | translate: { numero: i + 1 } }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <button mat-raised-button color="primary" class="form-button" (click)="agregarValidacion()">
+        {{ "validacion.agregar_validacion" | translate }}
+    </button>
+</div>

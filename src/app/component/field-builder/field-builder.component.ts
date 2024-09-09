@@ -21,17 +21,20 @@ export class FieldBuilderComponent implements OnInit {
   ngOnInit(): void {}
 
   get opciones(): FormArray {
+    console.log('salida de opciones')
+    console.log(this.campoForm.get('opciones') as FormArray)
     return this.campoForm.get('opciones') as FormArray;
   }
 
+  
   agregarOpcion() {
     this.opciones.push(this.crearOpcion());
   }
-
+  
   eliminarOpcion(index: number) {
     this.opciones.removeAt(index);
   }
-
+  
   crearOpcion(): FormGroup {
     return this.fb.group({
       valor: ['', Validators.required],
@@ -39,9 +42,10 @@ export class FieldBuilderComponent implements OnInit {
       deshabilitado: [false]
     });
   }
-
+  
   onToggleChange(value: string) {
     this.agregarOpciones = value === 'estaticas';
     this.ingresarURL = value === 'dinamicas';
   }
+  
 }
