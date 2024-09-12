@@ -17,7 +17,7 @@ export class ViewFormularioDinamicoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formularioDinamicoService.get('build_dynamic_form').subscribe((res) => {
+    this.formularioDinamicoService.get('').subscribe((res) => {
       if (res !== null) {
         this.formulario = res;
       }

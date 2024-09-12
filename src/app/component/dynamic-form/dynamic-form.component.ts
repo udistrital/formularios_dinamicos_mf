@@ -33,31 +33,33 @@ export class DynamicFormComponent implements OnInit {
   getValidators(validaciones): any[] {
     console.log(validaciones)
     const validators = [];
-    validaciones.forEach((validacion => {
-      if (validacion) {
-        if (validacion.tipo == 'requerido') {
-          validators.push(Validators.required);
+    if (validaciones){
+      validaciones.forEach((validacion => {
+        if (validacion) {
+          if (validacion.tipo == 'requerido') {
+            validators.push(Validators.required);
+          }
+          if (validacion.tipo == 'minLength') {
+            validators.push(Validators.minLength(validacion.valor));
+          }
+          if (validacion.tipo == 'maxLength') {
+            validators.push(Validators.maxLength(validacion.valor));
+          }
+          if (validacion.tipo == 'patron') {
+            validators.push(Validators.pattern(validacion.valor));
+          }
+          if (validacion.tipo == 'min') {
+            validators.push(Validators.min(validacion.valor));
+          }
+          if (validacion.tipo == 'max') {
+            validators.push(Validators.max(validacion.valor));
+          }
+          if (validacion.tipo == 'email') {
+            validators.push(Validators.email);
+          }
         }
-        if (validacion.tipo == 'minLength') {
-          validators.push(Validators.minLength(validacion.valor));
-        }
-        if (validacion.tipo == 'maxLength') {
-          validators.push(Validators.maxLength(validacion.valor));
-        }
-        if (validacion.tipo == 'patron') {
-          validators.push(Validators.pattern(validacion.valor));
-        }
-        if (validacion.tipo == 'min') {
-          validators.push(Validators.min(validacion.valor));
-        }
-        if (validacion.tipo == 'max') {
-          validators.push(Validators.max(validacion.valor));
-        }
-        if (validacion.tipo == 'email') {
-          validators.push(Validators.email);
-        }
-      }
-    }))
+      }))
+    }
 
     
     return validators;

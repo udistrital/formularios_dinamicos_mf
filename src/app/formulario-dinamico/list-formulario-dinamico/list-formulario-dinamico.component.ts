@@ -82,6 +82,10 @@ export class ListFormularioDinamicoComponent implements OnInit {
       }
     });
   }
+
+  CargarFormulario(id_fomulario: string){
+    
+  }
   ngOnInit() {
     this.CargarPeriodos()
   }
