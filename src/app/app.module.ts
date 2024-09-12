@@ -24,7 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { EmptyRouteComponent } from './empty-route/empty-route.component';
 import { SpinnerUtilInterceptor, SpinnerUtilModule } from 'spinner-util';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { TranslationService } from 'src/data/translation.service';
+import { TranslationService } from './services/translation.service';
 
 @NgModule({
   declarations: [

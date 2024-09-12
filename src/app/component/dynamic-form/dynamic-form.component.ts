@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GenericService } from 'src/data/generic.service';
+import { GenericService } from 'src/app/services/generic.service';
 import { Formulario } from 'src/data/models/formulario.model';
 
 @Component({

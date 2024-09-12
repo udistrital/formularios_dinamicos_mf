@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ParametrosService } from '../../data/parametros.service';
+import { ParametrosService } from '../services/parametros.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
@@ -46,8 +46,8 @@ import { FormularioDinamicoRoutingModule, routedComponents } from './formulario-
 import { CrudFormularioDinamicoComponent } from './crud-formulario-dinamico/crud-formulario-dinamico.component';
 import { ListFormularioDinamicoComponent } from './list-formulario-dinamico/list-formulario-dinamico.component';
 import { DynamicFormComponent } from '../component/dynamic-form/dynamic-form.component';
-import { FormularioDinamicoService } from 'src/data/formulario-dinamico.service';
-import { GenericService } from 'src/data/generic.service';
+import { FormularioDinamicoService } from '../services/formulario-dinamico.service';
+import { GenericService } from '../services/generic.service';
 import { FieldBuilderComponent } from '../component/field-builder/field-builder.component';
 import { SectionBuilderComponent } from '../component/section-builder/section-builder.component';
 import { FormBuilderComponent } from '../component/form-builder/form-builder.component';

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
+import { ParametrosService } from "src/app/services/parametros.service";
 
 @Component({
   selector: 'list-formulario-dinamico',
@@ -15,6 +16,7 @@ export class ListFormularioDinamicoComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   showTable: boolean = false
+  periodos: [] = []
   myForm: FormGroup;
   options: string[] = ['Option 1', 'Option 2', 'Option 3'];
   displayedColumns: string[] = ['id', 'nombre', 'version', 'opciones'];
@@ -38,10 +40,14 @@ export class ListFormularioDinamicoComponent implements OnInit {
   }]);
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private parametrosService: ParametrosService
+  ) {
     this.myForm = this.fb.group({
-      select1: ['', Validators.required],
-      select2: ['', Validators.required]
+      selectSistema: ['', Validators.required],
+      selectModulo: ['', Validators.required],
+      selectPeriodo: ['', Validators.required]
     });
   }
 
@@ -67,7 +73,16 @@ export class ListFormularioDinamicoComponent implements OnInit {
       console.log('Formulario inválido');
     }
   }
-  ngOnInit() {
 
+  CargarPeriodos() {
+    this.parametrosService.get('periodo?query=CodigoAbreviacion:PA&sortby=Id&order=desc&limit=0').subscribe((res) => {
+      if (res !== null) {
+        this.periodos = res.Data;
+        console.log(res.Data)
+      }
+    });
+  }
+  ngOnInit() {
+    this.CargarPeriodos()
   }
 }

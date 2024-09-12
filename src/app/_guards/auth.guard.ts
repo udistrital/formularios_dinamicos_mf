@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { MenuService } from 'src/data/menu.service';
+import { MenuService } from '../services/menu.service';
 import { PopUpManager } from '../managers/popup-manager';
 
 @Injectable({

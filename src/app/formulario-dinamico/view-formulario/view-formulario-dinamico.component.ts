@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
-import { FormularioDinamicoService } from "src/data/formulario-dinamico.service";
+import { FormularioDinamicoService } from "src/app/services/formulario-dinamico.service";
 import { Formulario } from "src/data/models/formulario.model";
 
 @Component({
