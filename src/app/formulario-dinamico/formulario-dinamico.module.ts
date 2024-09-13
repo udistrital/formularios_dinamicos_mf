@@ -52,6 +52,8 @@ import { FieldBuilderComponent } from '../component/field-builder/field-builder.
 import { SectionBuilderComponent } from '../component/section-builder/section-builder.component';
 import { FormBuilderComponent } from '../component/form-builder/form-builder.component';
 import { ValidateBuilderComponent } from '../component/validate-builder/validate-builder.component';
+import { ListVersionesComponent } from './list-formulario-dinamico/list-versiones/list-versiones.component';
+import { ViewVersionComponent } from './list-formulario-dinamico/view-version/view-version.component';
 
 @NgModule({
   imports: [
@@ -103,7 +105,9 @@ import { ValidateBuilderComponent } from '../component/validate-builder/validate
     FieldBuilderComponent,
     SectionBuilderComponent,
     FormBuilderComponent,
-    ValidateBuilderComponent
+    ValidateBuilderComponent,
+    ListVersionesComponent,
+    ViewVersionComponent
   ],
   providers: [
     PopUpManager,
