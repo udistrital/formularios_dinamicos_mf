@@ -21,9 +21,7 @@ export class EditarFormularioComponent implements OnInit {
       secciones: this.getSecciones(this.data.secciones)
     });
 
-    setTimeout(() => {
-      this.isLoading = false
-    }, 5000)
+    this.isLoading = false
   }
 
   getSecciones(secciones: any): FormArray {
