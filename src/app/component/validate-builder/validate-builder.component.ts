@@ -18,7 +18,9 @@ export class ValidateBuilderComponent implements OnInit {
   constructor(private fb: FormBuilder, private translate: TranslateService) { }
 
   ngOnInit(): void { 
-    console.log(this.validateForm)
+    if(this.validaciones.length > 0){
+      this.agregarValidaciones = true
+    }
   }
 
   get validaciones(): FormArray{
