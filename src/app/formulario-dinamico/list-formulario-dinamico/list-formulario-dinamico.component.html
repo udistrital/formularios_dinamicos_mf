@@ -75,7 +75,7 @@
             <button mat-icon-button (click)="CargarFormulario(row.id)" aria-label="Ver formulario">
               <mat-icon>visibility</mat-icon>
             </button>
-            <button mat-icon-button aria-label="Editar formulario">
+            <button mat-icon-button (click)="DialogEditarVersion(row.id)" aria-label="Editar formulario">
               <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button (click)="DialogListarVersiones()" aria-label="Listar versiones">

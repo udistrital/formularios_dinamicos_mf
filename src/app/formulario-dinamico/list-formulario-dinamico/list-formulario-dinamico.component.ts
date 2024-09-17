@@ -9,6 +9,7 @@ import { ListVersionesComponent } from "./list-versiones/list-versiones.componen
 import { Formulario } from "src/data/models/formulario.model";
 import { ViewVersionComponent } from "./view-version/view-version.component";
 import { FormularioDinamicoService } from "src/app/services/formulario-dinamico.service";
+import { EditarFormularioComponent } from "./editar-formulario/editar-formulario.component";
 
 @Component({
   selector: 'list-formulario-dinamico',
@@ -111,6 +112,19 @@ export class ListFormularioDinamicoComponent implements OnInit {
       height: '400px',
       width: '600px',
     })
+  }
+
+  DialogEditarVersion(id_fomulario: number) {
+    console.log(id_fomulario)
+    this.formularioDinamicoService.get('').subscribe((res) => {
+      if (res !== null) {
+        this.dialog.open(EditarFormularioComponent, {
+          data: res,
+          height: '400px',
+          width: '600px',
+        })
+      }
+    });
   }
 
   ngOnInit() {

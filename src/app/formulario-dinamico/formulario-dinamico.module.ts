@@ -54,6 +54,7 @@ import { FormBuilderComponent } from '../component/form-builder/form-builder.com
 import { ValidateBuilderComponent } from '../component/validate-builder/validate-builder.component';
 import { ListVersionesComponent } from './list-formulario-dinamico/list-versiones/list-versiones.component';
 import { ViewVersionComponent } from './list-formulario-dinamico/view-version/view-version.component';
+import { EditarFormularioComponent } from './list-formulario-dinamico/editar-formulario/editar-formulario.component';
 
 @NgModule({
   imports: [
@@ -107,7 +108,8 @@ import { ViewVersionComponent } from './list-formulario-dinamico/view-version/vi
     FormBuilderComponent,
     ValidateBuilderComponent,
     ListVersionesComponent,
-    ViewVersionComponent
+    ViewVersionComponent,
+    EditarFormularioComponent
   ],
   providers: [
     PopUpManager,
