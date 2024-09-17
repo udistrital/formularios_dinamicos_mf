@@ -18,11 +18,13 @@ export class FieldBuilderComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private translate: TranslateService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(this.opciones.length > 0){
+      this.agregarOpciones = true
+    }
+  }
 
   get opciones(): FormArray {
-    console.log('salida de opciones')
-    console.log(this.campoForm.get('opciones') as FormArray)
     return this.campoForm.get('opciones') as FormArray;
   }
 

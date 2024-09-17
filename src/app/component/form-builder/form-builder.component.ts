@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Formulario } from 'src/data/models/formulario.model';
@@ -10,6 +10,7 @@ import { Seccion } from 'src/data/models/seccion.model';
   styleUrls: ['./form-builder.component.scss']
 })
 export class FormBuilderComponent implements OnInit {
+  @Input() formularioBase: FormGroup;
   formularioForm: FormGroup;
   formulario: Formulario;
   mostrarFormulario: boolean = false;
@@ -17,10 +18,16 @@ export class FormBuilderComponent implements OnInit {
   constructor(private fb: FormBuilder, private translate: TranslateService) {}
 
   ngOnInit(): void {
-    this.formularioForm = this.fb.group({
-      nombre: [''],
-      secciones: this.fb.array([])
-    });
+    if(this.formularioBase){
+      console.log("hay")
+      this.formularioForm = this.formularioBase
+    }else{
+      console.log("no hay")
+      this.formularioForm = this.fb.group({
+        nombre: [''],
+        secciones: this.fb.array([])
+      });
+    }
   }
 
   get secciones(): FormArray {
