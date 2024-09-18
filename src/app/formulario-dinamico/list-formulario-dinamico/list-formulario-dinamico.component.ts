@@ -57,15 +57,6 @@ export class ListFormularioDinamicoComponent implements OnInit {
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
   onSubmit() {
     if (this.myForm.valid) {
       console.log('Formulario válido', this.myForm.value);

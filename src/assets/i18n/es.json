@@ -105,6 +105,7 @@
         "maxLength": "Longitud máxima",
         "min": "Valor númerico mínimo",
         "max": "Valor númerico máximo",
-        "email": "Tipo correo"
+        "email": "Tipo correo",
+        "grupo": "Validacion {{numero}}"
     }
 }

@@ -10,3 +10,16 @@ table {
   td, th {
     width: 25%;
   }
+
+  .mat-mdc-row:hover .mat-mdc-cell {
+    background-color: var(--color100);
+  }
+
+  .button-container {
+    text-align: center;
+  }
+
+  .table-container {
+
+    margin-top: 2em;
+  }

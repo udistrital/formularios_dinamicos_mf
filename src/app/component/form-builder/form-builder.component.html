@@ -7,19 +7,24 @@
   <div formArrayName="secciones">
     <div *ngFor="let seccion of secciones.controls; let i = index">
       <h5> {{ "seccion.grupo" | translate: { numero: i + 1 } }} </h5>
-
+      <div class="button-container">
+        <button mat-raised-button color="warn" class="form-button" (click)="eliminarSeccion(i)">
+          <mat-icon>delete</mat-icon>
+          {{ "seccion.eliminar" | translate: { numero: i + 1 } }}
+        </button>
+      </div>
       <section-builder [seccionForm]="seccion" [numero]="i + 1"></section-builder>
-      <button mat-raised-button color="warn" class="form-button" (click)="eliminarSeccion(i)">
-        <mat-icon>delete</mat-icon>
-        {{ "seccion.eliminar" | translate: { numero: i + 1 } }}
-      </button>
       <mat-divider></mat-divider>
     </div>
 
-    <button mat-raised-button color="primary" class="form-button" (click)="agregarSeccion()">
-      {{ "seccion.agregar" | translate }}
-    </button>
+    <div class="button-container">
+      <button mat-raised-button color="primary" class="form-button" (click)="agregarSeccion()">
+        {{ "seccion.agregar" | translate }}
+      </button>
+    </div>
   </div>
+
+  <mat-divider></mat-divider>
 
   <button mat-raised-button color="primary" class="form-button" (click)="guardarFormulario()">
     {{ "formulario.guardar" | translate }}

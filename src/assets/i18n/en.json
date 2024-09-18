@@ -104,6 +104,7 @@
         "maxLength": "Maximun length",
         "min": "Minimun numeric value",
         "max": "Maximum numeric value",
-        "email": "Tipe email"
+        "email": "Tipe email",
+        "grupo": "Validation {{numero}}"
     }
 }
