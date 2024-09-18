@@ -78,7 +78,7 @@ steps:
   image: node:lts-bullseye
   commands:
   - node --version
-  - npm i
+  - npm i --force
   - npm run build
   when:
     branch:
@@ -90,7 +90,7 @@ steps:
   image: node:lts-bullseye
   commands:
   - node --version
-  - npm i
+  - npm i --force
   - npm run build:test
   when:
     branch:
@@ -102,7 +102,7 @@ steps:
   image: node:lts-bullseye
   commands:
   - node --version
-  - npm i
+  - npm i --force
   - npm run build:prod
   when:
     branch:
