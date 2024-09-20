@@ -90,18 +90,18 @@ export class ListFormularioDinamicoComponent implements OnInit {
   }
 
   DialogListarVersiones(): void {
-    let dialogListar = this.dialog.open(ListVersionesComponent, {
+    this.dialog.open(ListVersionesComponent, {
       data: this.formularios,
-      height: '400px',
-      width: '600px',
+      height: '80%',
+      width: '80%',
     })
   }
 
   DialogVisualizarVersion(formulario: Formulario){
-    let dialogListar = this.dialog.open(ViewVersionComponent, {
+    this.dialog.open(ViewVersionComponent, {
       data: formulario,
-      height: '400px',
-      width: '600px',
+      height: '80%',
+      width: '80%',
     })
   }
 
@@ -111,8 +111,8 @@ export class ListFormularioDinamicoComponent implements OnInit {
       if (res !== null) {
         this.dialog.open(EditarFormularioComponent, {
           data: res,
-          height: '400px',
-          width: '600px',
+          height: '80%',
+          width: '80%',
         })
       }
     });
