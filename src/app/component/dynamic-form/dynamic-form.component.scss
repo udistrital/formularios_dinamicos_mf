@@ -1,6 +1,8 @@
 .example-form {
   min-width: 150px;
   width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .example-full-width {
@@ -14,4 +16,9 @@
 
 .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
   margin-left: 8px;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 1em;
 }
