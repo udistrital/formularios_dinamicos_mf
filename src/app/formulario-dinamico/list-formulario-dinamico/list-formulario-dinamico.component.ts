@@ -78,7 +78,7 @@ export class ListFormularioDinamicoComponent implements OnInit {
 
   CargarPlantillas(periodo_id: string, modulo_id: string) {
     this.crudFormularioDinamicoService.get(`plantillas?query=periodo_id:${periodo_id},modulo_id:${modulo_id}`).subscribe((res) => {
-      if (res.Data !== null && res.Data.lenght > 0) {
+      if (res.Data !== null && res.Data.length > 0) {
         console.log(res.Data)
         this.formularios = res.Data
         this.dataSource = new MatTableDataSource([res.Data[0]]);
