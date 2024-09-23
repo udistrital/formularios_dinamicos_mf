@@ -11,6 +11,7 @@ import { ViewVersionComponent } from "./view-version/view-version.component";
 import { FormularioDinamicoService } from "src/app/services/formulario-dinamico.service";
 import { EditarFormularioComponent } from "./editar-formulario/editar-formulario.component";
 import { CrudFormularioDinamicoService } from "src/app/services/crud-formulario-dinamico.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'list-formulario-dinamico',
@@ -23,6 +24,7 @@ export class ListFormularioDinamicoComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   showTable: boolean = false
+  existeFormulario = true
   periodos: [] = []
   modulos: [] = []
   myForm: FormGroup;
@@ -37,6 +39,7 @@ export class ListFormularioDinamicoComponent implements OnInit {
     private parametrosService: ParametrosService,
     private formularioDinamicoService: FormularioDinamicoService,
     private crudFormularioDinamicoService: CrudFormularioDinamicoService,
+    private router: Router,
     public dialog: MatDialog
   ) {
     this.myForm = this.fb.group({
@@ -75,15 +78,18 @@ export class ListFormularioDinamicoComponent implements OnInit {
 
   CargarPlantillas(periodo_id: string, modulo_id: string) {
     this.crudFormularioDinamicoService.get(`plantillas?query=periodo_id:${periodo_id},modulo_id:${modulo_id}`).subscribe((res) => {
-      if (res !== null) {
+      if (res.Data !== null && res.Data.lenght > 0) {
         console.log(res.Data)
         this.formularios = res.Data
         this.dataSource = new MatTableDataSource([res.Data[0]]);
         this.showTable = true
+        this.existeFormulario = true
         setTimeout(() => {
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
         })
+      }else {
+        this.existeFormulario = false
       }
     })
   }
@@ -124,6 +130,10 @@ export class ListFormularioDinamicoComponent implements OnInit {
         })
       }
     });
+  }
+
+  CrearPlantilla(){
+    this.router.navigate(['/crud-formulario'])
   }
 
   ngOnInit() {
