@@ -20,8 +20,8 @@
       <mat-form-field class="form-field" appearance="fill">
         <mat-label>Seleccione un módulo</mat-label>
         <mat-select formControlName="selectModulo" required>
-          <mat-option *ngFor="let option of options" [value]="option">
-            {{ option }}
+          <mat-option *ngFor="let modulo of modulos" [value]="modulo._id">
+            {{ modulo.nombre }}
           </mat-option>
         </mat-select>
         <mat-error *ngIf="myForm.controls['selectModulo'].hasError('required')">
@@ -54,7 +54,7 @@
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          <td mat-cell *matCellDef="let row; let i = index"> {{i+1}} </td>
         </ng-container>
 
         <!-- Version Column -->

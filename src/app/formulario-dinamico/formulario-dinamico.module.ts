@@ -55,6 +55,7 @@ import { ValidateBuilderComponent } from '../component/validate-builder/validate
 import { ListVersionesComponent } from './list-formulario-dinamico/list-versiones/list-versiones.component';
 import { ViewVersionComponent } from './list-formulario-dinamico/view-version/view-version.component';
 import { EditarFormularioComponent } from './list-formulario-dinamico/editar-formulario/editar-formulario.component';
+import { CrudFormularioDinamicoService } from '../services/crud-formulario-dinamico.service';
 
 @NgModule({
   imports: [
@@ -115,6 +116,7 @@ import { EditarFormularioComponent } from './list-formulario-dinamico/editar-for
     PopUpManager,
     ParametrosService,
     FormularioDinamicoService,
+    CrudFormularioDinamicoService,
     GenericService,
     {
       provide: MatPaginatorIntl,
