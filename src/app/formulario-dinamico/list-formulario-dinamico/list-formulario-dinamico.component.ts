@@ -57,15 +57,6 @@ export class ListFormularioDinamicoComponent implements OnInit {
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
   onSubmit() {
     if (this.myForm.valid) {
       console.log('Formulario válido', this.myForm.value);
@@ -99,18 +90,18 @@ export class ListFormularioDinamicoComponent implements OnInit {
   }
 
   DialogListarVersiones(): void {
-    let dialogListar = this.dialog.open(ListVersionesComponent, {
+    this.dialog.open(ListVersionesComponent, {
       data: this.formularios,
-      height: '400px',
-      width: '600px',
+      height: '80%',
+      width: '80%',
     })
   }
 
   DialogVisualizarVersion(formulario: Formulario){
-    let dialogListar = this.dialog.open(ViewVersionComponent, {
+    this.dialog.open(ViewVersionComponent, {
       data: formulario,
-      height: '400px',
-      width: '600px',
+      height: '80%',
+      width: '80%',
     })
   }
 
@@ -120,8 +111,8 @@ export class ListFormularioDinamicoComponent implements OnInit {
       if (res !== null) {
         this.dialog.open(EditarFormularioComponent, {
           data: res,
-          height: '400px',
-          width: '600px',
+          height: '80%',
+          width: '80%',
         })
       }
     });
