@@ -12,16 +12,20 @@
   <div formArrayName="campos">
     <div *ngFor="let campo of campos.controls; let i = index">
       <h5> {{ "campo.grupo" | translate: { numero: i + 1 } }} </h5>
+      <div class="button-container">
+        <button mat-raised-button color="warn" class="form-button" (click)="eliminarCampo(i)">
+          <mat-icon>delete</mat-icon>
+          {{ "campo.eliminar" | translate: { numero: i + 1 } }}
+        </button>
+      </div>
 
       <field-builder [campoForm]="campo" [numero]="i + 1"></field-builder>
-      <button mat-raised-button color="warn" class="form-button" (click)="eliminarCampo(i)">
-        <mat-icon>delete</mat-icon>
-        {{ "campo.eliminar" | translate: { numero: i + 1 } }}
-      </button>
     </div>
 
-    <button mat-raised-button color="primary" class="form-button" (click)="agregarCampo()">
-      {{ "campo.agregar" | translate }}
-    </button>
+    <div class="button-container">
+      <button mat-raised-button color="primary" class="form-button" (click)="agregarCampo()">
+        {{ "campo.agregar" | translate }}
+      </button>
+    </div>
   </div>
 </div>

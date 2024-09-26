@@ -39,3 +39,12 @@
     flex-direction: column;
     gap: 16px;
 }
+
+.button-container {
+  display: flex;
+  text-align: center;
+  button {
+    width: 100%;
+    max-width: 100%;
+  }
+}
