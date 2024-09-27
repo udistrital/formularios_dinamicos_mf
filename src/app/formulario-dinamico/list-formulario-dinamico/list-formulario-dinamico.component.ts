@@ -10,6 +10,8 @@ import { Formulario } from "src/data/models/formulario.model";
 import { ViewVersionComponent } from "./view-version/view-version.component";
 import { FormularioDinamicoService } from "src/app/services/formulario-dinamico.service";
 import { EditarFormularioComponent } from "./editar-formulario/editar-formulario.component";
+import { CrudFormularioDinamicoService } from "src/app/services/crud-formulario-dinamico.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'list-formulario-dinamico',
@@ -22,32 +24,22 @@ export class ListFormularioDinamicoComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   showTable: boolean = false
+  existeFormulario = true
   periodos: [] = []
+  modulos: [] = []
   myForm: FormGroup;
   options: string[] = ['SGA', 'SISIFO', 'IDEXUD'];
   displayedColumns: string[] = ['id', 'nombre', 'version', 'opciones'];
-  formularios = [{
-    id: 1,
-    nombre: "Caracterización",
-    version: 1
-  },
-  {
-    id: 2,
-    nombre: "Caracterización editada",
-    version: 2
-  },
-  {
-    id: 3,
-    nombre: "Caracterización final",
-    version: 3
-  }]
+  formularios = []
 
-  dataSource = new MatTableDataSource(this.formularios);
+  dataSource = new MatTableDataSource([[]]);
 
   constructor(
     private fb: FormBuilder,
     private parametrosService: ParametrosService,
     private formularioDinamicoService: FormularioDinamicoService,
+    private crudFormularioDinamicoService: CrudFormularioDinamicoService,
+    private router: Router,
     public dialog: MatDialog
   ) {
     this.myForm = this.fb.group({
@@ -59,13 +51,9 @@ export class ListFormularioDinamicoComponent implements OnInit {
 
   onSubmit() {
     if (this.myForm.valid) {
-      console.log('Formulario válido', this.myForm.value);
-      this.showTable = true
 
-      setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      })
+      this.CargarPlantillas(this.myForm.get('selectPeriodo')?.value, this.myForm.get('selectModulo')?.value)
+
     } else {
       console.log('Formulario inválido');
     }
@@ -78,6 +66,32 @@ export class ListFormularioDinamicoComponent implements OnInit {
         console.log(res.Data)
       }
     });
+  }
+
+  CargarModulos() {
+    this.crudFormularioDinamicoService.get('modulos').subscribe((res) => {
+      if (res !== null) {
+        this.modulos = res.Data
+      }
+    })
+  }
+
+  CargarPlantillas(periodo_id: string, modulo_id: string) {
+    this.crudFormularioDinamicoService.get(`plantillas?query=periodo_id:${periodo_id},modulo_id:${modulo_id}`).subscribe((res) => {
+      if (res.Data !== null && res.Data.length > 0) {
+        console.log(res.Data)
+        this.formularios = res.Data
+        this.dataSource = new MatTableDataSource([res.Data[0]]);
+        this.showTable = true
+        this.existeFormulario = true
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        })
+      }else {
+        this.existeFormulario = false
+      }
+    })
   }
 
   CargarFormulario(id_fomulario: number) {
@@ -97,7 +111,7 @@ export class ListFormularioDinamicoComponent implements OnInit {
     })
   }
 
-  DialogVisualizarVersion(formulario: Formulario){
+  DialogVisualizarVersion(formulario: Formulario) {
     this.dialog.open(ViewVersionComponent, {
       data: formulario,
       height: '80%',
@@ -118,7 +132,12 @@ export class ListFormularioDinamicoComponent implements OnInit {
     });
   }
 
+  CrearPlantilla(){
+    this.router.navigate(['/crud-formulario'])
+  }
+
   ngOnInit() {
     this.CargarPeriodos()
+    this.CargarModulos()
   }
 }
