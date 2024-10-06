@@ -63,7 +63,7 @@ export class ListFormularioDinamicoComponent implements OnInit {
     this.parametrosService.get('periodo?query=CodigoAbreviacion:PA&sortby=Id&order=desc&limit=0').subscribe((res) => {
       if (res !== null) {
         this.periodos = res.Data;
-        console.log(res.Data)
+        console.log("Periodo", res.Data)
       }
     });
   }
@@ -95,8 +95,9 @@ export class ListFormularioDinamicoComponent implements OnInit {
   }
 
   CargarFormulario(id_fomulario: number) {
-    console.log(id_fomulario)
-    this.formularioDinamicoService.get('').subscribe((res) => {
+    console.log("id",id_fomulario)
+    console.log(`plantillas/versiones?modulo_id=${ this.myForm.get('selectModulo')?.value}`)
+    this.crudFormularioDinamicoService.get(`plantillas/versiones?modulo_id=${ this.myForm.get('selectModulo')?.value}`).subscribe((res) => {
       if (res !== null) {
         this.DialogVisualizarVersion(res)
       }

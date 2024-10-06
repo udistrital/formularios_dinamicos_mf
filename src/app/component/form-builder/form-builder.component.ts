@@ -15,13 +15,13 @@ export class FormBuilderComponent implements OnInit {
   formulario: Formulario;
   mostrarFormulario: boolean = false;
 
-  constructor(private fb: FormBuilder, private translate: TranslateService) {}
+  constructor(private fb: FormBuilder, private translate: TranslateService) { }
 
   ngOnInit(): void {
-    if(this.formularioBase){
+    if (this.formularioBase) {
       console.log("hay")
       this.formularioForm = this.formularioBase
-    }else{
+    } else {
       console.log("no hay")
       this.formularioForm = this.fb.group({
         nombre: [''],
@@ -40,7 +40,8 @@ export class FormBuilderComponent implements OnInit {
       descripcion: '',
       campos: []
     };
-    (this.formularioForm.get('secciones') as FormArray).push(this.crearSeccionFormGroup(nuevaSeccion));
+
+    this.secciones.push(this.crearSeccionFormGroup(nuevaSeccion));
   }
 
   crearSeccionFormGroup(seccion: Seccion): FormGroup {
@@ -52,7 +53,7 @@ export class FormBuilderComponent implements OnInit {
   }
 
   eliminarSeccion(index: number) {
-    (this.formularioForm.get('secciones') as FormArray).removeAt(index);
+    this.secciones.removeAt(index);
   }
 
   guardarFormulario() {

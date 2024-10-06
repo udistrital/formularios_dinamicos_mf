@@ -28,6 +28,7 @@ export class ValidateBuilderComponent implements OnInit {
     console.log(this.validateForm.get('validaciones'))
     return this.validateForm.get('validaciones') as FormArray;
   }
+  
   agregarValidacion() {
     this.validaciones.push(this.crearValidacion());
     this.agregarValidaciones = true

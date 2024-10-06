@@ -17,14 +17,18 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({});
+
     this.formulario.secciones.forEach(seccion => {
       seccion.campos.forEach(campo => {
         const validators = this.getValidators(campo.validaciones);
+        
+        // Crear el control del formulario
         this.form.addControl(campo.nombre, this.fb.control({ value: campo.valor || '', disabled: campo.deshabilitado }, validators));
-
-        if (campo.url) {
-          this.genericService.getSelectOptions(campo.url).subscribe(options => {
-            campo.opciones = options;
+        
+        // Verificar si el campo tiene un URL para opciones dinámicas
+        if (campo.parametros?.url) {
+          this.genericService.getSelectOptions(campo.parametros.url).subscribe(options => {
+            campo.parametros.opciones = options;
           });
         }
       });
