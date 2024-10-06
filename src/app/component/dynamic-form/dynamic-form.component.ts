@@ -10,16 +10,17 @@ import { Formulario } from 'src/data/models/formulario.model';
 })
 export class DynamicFormComponent implements OnInit {
   @Input() formulario: Formulario;
+  @Input() modo: 'crear' | 'editar' = 'crear';
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private genericService: GenericService) {}
+  constructor(private fb: FormBuilder, private genericService: GenericService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({});
     this.formulario.secciones.forEach(seccion => {
-        seccion.campos.forEach(campo => {
+      seccion.campos.forEach(campo => {
         const validators = this.getValidators(campo.validaciones);
-        this.form.addControl(campo.nombre, this.fb.control({ value: campo.valor, disabled: campo.deshabilitado }, validators));
+        this.form.addControl(campo.nombre, this.fb.control({ value: campo.valor || '', disabled: campo.deshabilitado }, validators));
 
         if (campo.url) {
           this.genericService.getSelectOptions(campo.url).subscribe(options => {
@@ -33,7 +34,7 @@ export class DynamicFormComponent implements OnInit {
   getValidators(validaciones): any[] {
     console.log(validaciones)
     const validators = [];
-    if (validaciones){
+    if (validaciones) {
       validaciones.forEach((validacion => {
         if (validacion) {
           if (validacion.tipo == 'requerido') {
@@ -61,13 +62,18 @@ export class DynamicFormComponent implements OnInit {
       }))
     }
 
-    
+
     return validators;
   }
 
   onSubmit(): void {
     if (this.form.valid) {
-      console.log('Form submitted', this.form.value);
+      const formData = this.form.value;
+      if (this.modo === 'crear') {
+        console.log('Registro creado', formData);
+      } else if (this.modo === 'editar') {
+        console.log('Registro actualizado', formData);
+      }
     } else {
       console.log('Form is invalid', this.form);
     }
