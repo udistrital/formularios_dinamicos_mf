@@ -73,6 +73,28 @@
 
   <mat-checkbox formControlName="deshabilitado">{{ "campo.deshabilitado" | translate }}</mat-checkbox>
 
+
+  <mat-divider></mat-divider>
+
+  <!-- Título para la nueva sección -->
+  <h3>{{ "Valores de distribución de información" | translate }}</h3>
+
+  <mat-form-field class="form-field">
+    <mat-label>{{ "campo.servicio" | translate: { numero: numero } }}</mat-label>
+    <input matInput formControlName="servicio" [placeholder]="'campo.placeholder_servicio' | translate">
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>{{ "campo.endpoint" | translate: { numero: numero } }}</mat-label>
+    <input matInput formControlName="endpoint" [placeholder]="'campo.placeholder_endpoint' | translate">
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>{{ "campo.campo" | translate: { numero: numero } }}</mat-label>
+    <input matInput formControlName="campo" [placeholder]="'campo.placeholder_campo' | translate">
+  </mat-form-field>
+
+  <mat-checkbox formControlName="agrupado">{{ "campo.agrupado" | translate }}</mat-checkbox>
   <validate-builder [validateForm]="campoForm"></validate-builder>
 
 </div>

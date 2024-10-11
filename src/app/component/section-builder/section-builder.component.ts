@@ -29,7 +29,11 @@ export class SectionBuilderComponent implements OnInit {
       tipo: 'text',
       validaciones: {},
       parametros: {},
-      deshabilitado: false,
+      deshabilitado: false, 
+      servicio: '', 
+      endpoint: '', 
+      campo: '', 
+      agrupado: false 
     };
     this.campos.push(this.crearCampoFormGroup(nuevoCampo));
   }
@@ -43,9 +47,13 @@ export class SectionBuilderComponent implements OnInit {
       deshabilitado: [campo.deshabilitado || false],
       parametros: this.fb.group({
         opciones: this.fb.array([]),
-        url: [campo.url || '']
+        url: [campo.parametros.url || '']
       }),
       validaciones: this.fb.array([]),
+      servicio: [campo.servicio || ''], 
+      endpoint: [campo.endpoint || ''], 
+      campo: [campo.campo || ''], 
+      agrupado: [campo.agrupado || false] 
     });
   }
   eliminarCampo(index: number) {
