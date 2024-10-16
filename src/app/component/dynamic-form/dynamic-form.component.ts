@@ -73,10 +73,24 @@ export class DynamicFormComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       const formData = this.form.value;
+      const respuesta = {};
+  
+      this.formulario.secciones.forEach(seccion => {
+        seccion.campos.forEach(campo => {
+          respuesta[campo.nombre] = {
+            valor: formData[campo.nombre], 
+            servicio: campo.servicio,
+            endpoint: campo.endpoint,
+            agrupado: campo.agrupado,
+            campo: campo.campo
+          };
+        });
+      });
+  
       if (this.modo === 'crear') {
-        console.log('Registro creado', formData);
+        console.log('Registro creado', respuesta);
       } else if (this.modo === 'editar') {
-        console.log('Registro actualizado', formData);
+        console.log('Registro actualizado', respuesta);
       }
     } else {
       console.log('Form is invalid', this.form);
