@@ -70,6 +70,27 @@ export class DynamicFormComponent implements OnInit {
     return validators;
   }
 
+  guardarYAvanzar(stepper: any, indiceSeccion: number): void {
+    const seccion = this.formulario.secciones[indiceSeccion];
+    const formData = this.form.value;
+    const respuestaSeccion = {};
+    
+    seccion.campos.forEach(campo => {
+      respuestaSeccion[campo.nombre] = {
+        valor: formData[campo.nombre],
+        servicio: campo.servicio,
+        endpoint: campo.endpoint,
+        agrupado: campo.agrupado,
+        campo: campo.campo
+      };
+    });
+
+    console.log(`Datos guardados de la sección ${seccion.nombre}:`, respuestaSeccion);
+
+    // Avanzar al siguiente paso del stepper
+    stepper.next();
+  }
+
   onSubmit(): void {
     if (this.form.valid) {
       const formData = this.form.value;

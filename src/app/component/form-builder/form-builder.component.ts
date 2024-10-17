@@ -28,6 +28,7 @@ export class FormBuilderComponent implements OnInit {
       console.log("no hay")
       this.formularioForm = this.fb.group({
         nombre: [''],
+        tipo: 'accordion',
         secciones: this.fb.array([])
       });
     }
