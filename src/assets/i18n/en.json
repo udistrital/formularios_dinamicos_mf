@@ -80,7 +80,16 @@
         "etiqueta_opcion": "Option Label",
         "placeholder_etiqueta_opcion": "opciones.valor_{{numero}}",
         "deshabilitado_opcion": "Disabled option {{numero}}?",
-        "eliminar_opcion": "Delete option {{numero}}"
+        "eliminar_opcion": "Delete option {{numero}}",
+        "valor": "Field value",
+        "placeholder_valor": "Enter field value",
+        "servicio": "Service",
+        "placeholder_servicio": "Example: UserService",
+        "endpoint": "Endpoint",
+        "placeholder_endpoint": "Example: /users",
+        "campo": "Field key",
+        "placeholder_campo": "Example: userName",
+        "agrupado": "Grouped?"
     },
     "tipos": {
         "text": "Text",
@@ -99,8 +108,8 @@
         "eliminar_validacion": "Delete validation {{numero}}",
         "placeholder_valor_opcion": "Validation value",
         "tipo_validacion": "Validation tipe",
-        "requerido":"Is required",
-        "minLength":"Minimun length",
+        "requerido": "Is required",
+        "minLength": "Minimun length",
         "maxLength": "Maximun length",
         "min": "Minimun numeric value",
         "max": "Maximum numeric value",
