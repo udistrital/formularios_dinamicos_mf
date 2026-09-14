@@ -5,6 +5,7 @@ import { FormularioDinamicoComponent } from "./formulario-dinamico.component";
 import { ListFormularioDinamicoComponent } from "./list-formulario-dinamico/list-formulario-dinamico.component";
 import { CrudFormularioDinamicoComponent } from "./crud-formulario-dinamico/crud-formulario-dinamico.component";
 import { ViewFormularioDinamicoComponent } from "./view-formulario/view-formulario-dinamico.component";
+import { EditInfoFormularioDinamicoComponent } from "./edit-info-formulario-dinamico/edit-info-formulario-dinamico.component";
 
 const routes: Routes = [{
     path: '',
@@ -21,10 +22,15 @@ const routes: Routes = [{
             //canActivate: [AuthGuard],
           },
           {
-            path: "view-formulario",
+            path: "view-formulario/:nombre",
             component: ViewFormularioDinamicoComponent,
             //canActivate: [AuthGuard],
-          }
+          },
+          {
+            path: "editInfo-formulario/:nombre/:id",
+            component: EditInfoFormularioDinamicoComponent,
+            //canActivate: [AuthGuard],
+          },
     ]
 }]
 
@@ -42,5 +48,6 @@ export const routedComponents = [
     FormularioDinamicoComponent,
     ListFormularioDinamicoComponent,
     CrudFormularioDinamicoComponent,
-    ViewFormularioDinamicoComponent
+    ViewFormularioDinamicoComponent,
+    EditInfoFormularioDinamicoComponent
 ]

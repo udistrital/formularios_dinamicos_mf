@@ -8,6 +8,7 @@ import { TiposCampos } from 'src/data/models/tipos.model';
   templateUrl: './field-builder.component.html',
   styleUrls: ['./field-builder.component.scss']
 })
+
 export class FieldBuilderComponent implements OnInit {
   @Input() campoForm: FormGroup;
   @Input() numero: number;
@@ -25,8 +26,14 @@ export class FieldBuilderComponent implements OnInit {
   }
 
   get opciones(): FormArray {
-    return this.campoForm.get('opciones') as FormArray;
+    return this.campoForm.get('parametros.opciones') as FormArray;
   }
+
+  // Getter para la URL dentro de parametros
+  get url() {
+    return this.campoForm.get('parametros.url');
+  }
+
 
   
   agregarOpcion() {
@@ -46,6 +53,13 @@ export class FieldBuilderComponent implements OnInit {
   }
   
   onToggleChange(value: string) {
+    const parametrosGroup = this.campoForm.get('parametros') as FormGroup;
+  
+    if (!parametrosGroup) {
+      console.error('El FormGroup "parametros" no está inicializado.');
+      return;
+    }
+  
     this.agregarOpciones = value === 'estaticas';
     this.ingresarURL = value === 'dinamicas';
   }

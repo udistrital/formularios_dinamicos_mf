@@ -10,20 +10,25 @@ import { Formulario } from 'src/data/models/formulario.model';
 })
 export class DynamicFormComponent implements OnInit {
   @Input() formulario: Formulario;
+  @Input() modo: 'crear' | 'editar' = 'crear';
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private genericService: GenericService) {}
+  constructor(private fb: FormBuilder, private genericService: GenericService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({});
-    this.formulario.secciones.forEach(seccion => {
-        seccion.campos.forEach(campo => {
-        const validators = this.getValidators(campo.validaciones);
-        this.form.addControl(campo.nombre, this.fb.control({ value: campo.valor, disabled: campo.deshabilitado }, validators));
 
-        if (campo.url) {
-          this.genericService.getSelectOptions(campo.url).subscribe(options => {
-            campo.opciones = options;
+    this.formulario.secciones.forEach(seccion => {
+      seccion.campos.forEach(campo => {
+        const validators = this.getValidators(campo.validaciones);
+        
+        // Crear el control del formulario
+        this.form.addControl(campo.nombre, this.fb.control({ value: campo.valor || '', disabled: campo.deshabilitado }, validators));
+        
+        // Verificar si el campo tiene un URL para opciones dinámicas
+        if (campo.parametros?.url) {
+          this.genericService.getSelectOptions(campo.parametros.url).subscribe(options => {
+            campo.parametros.opciones = options;
           });
         }
       });
@@ -33,7 +38,7 @@ export class DynamicFormComponent implements OnInit {
   getValidators(validaciones): any[] {
     console.log(validaciones)
     const validators = [];
-    if (validaciones){
+    if (validaciones) {
       validaciones.forEach((validacion => {
         if (validacion) {
           if (validacion.tipo == 'requerido') {
@@ -61,13 +66,32 @@ export class DynamicFormComponent implements OnInit {
       }))
     }
 
-    
+
     return validators;
   }
 
   onSubmit(): void {
     if (this.form.valid) {
-      console.log('Form submitted', this.form.value);
+      const formData = this.form.value;
+      const respuesta = {};
+  
+      this.formulario.secciones.forEach(seccion => {
+        seccion.campos.forEach(campo => {
+          respuesta[campo.nombre] = {
+            valor: formData[campo.nombre], 
+            servicio: campo.servicio,
+            endpoint: campo.endpoint,
+            agrupado: campo.agrupado,
+            campo: campo.campo
+          };
+        });
+      });
+  
+      if (this.modo === 'crear') {
+        console.log('Registro creado', respuesta);
+      } else if (this.modo === 'editar') {
+        console.log('Registro actualizado', respuesta);
+      }
     } else {
       console.log('Form is invalid', this.form);
     }

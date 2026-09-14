@@ -1,15 +1,16 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit  } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
 import { FormularioDinamicoService } from "src/app/services/formulario-dinamico.service";
 import { Formulario } from "src/data/models/formulario.model";
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
-  selector: 'view-formulario-dinamico',
-  templateUrl: './view-formulario-dinamico.component.html',
-  styleUrls: ['./view-formulario-dinamico.component.scss'],
+  selector: 'app-edit-info-formulario-dinamico',
+  templateUrl: './edit-info-formulario-dinamico.component.html',
+  styleUrl: './edit-info-formulario-dinamico.component.scss'
 })
-export class ViewFormularioDinamicoComponent implements OnInit {
+export class EditInfoFormularioDinamicoComponent implements OnInit {
 
   formulario: Formulario;
   id: string | null = null;
@@ -21,13 +22,14 @@ export class ViewFormularioDinamicoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.nombre = this.route.snapshot.paramMap.get('nombre'); 
     this.loadFormulario(); 
   }
 
   loadFormulario() {
     if (this.nombre) {
-      this.formularioDinamicoService.get(`${this.nombre}`).subscribe((res) => {
+      this.formularioDinamicoService.get(`${this.nombre}/${this.id}`).subscribe((res) => {
         if (res !== null) {
           this.formulario = res;
         }

@@ -81,7 +81,16 @@
         "etiqueta_opcion": "Etiqueta opción {{numero}}",
         "placeholder_etiqueta_opcion": "opciones.valor_{{numero}}",
         "deshabilitado_opcion": "¿Deshabilitar opción {{numero}}?",
-        "eliminar_opcion": "Eliminar opción {{numero}}"
+        "eliminar_opcion": "Eliminar opción {{numero}}",
+        "valor": "Valor del campo",
+        "placeholder_valor": "Ingresar valor del campo",
+        "servicio": "Servicio",
+        "placeholder_servicio": "Ej: ServicioUsuario",
+        "endpoint": "Endpoint",
+        "placeholder_endpoint": "Ej: /usuarios",
+        "campo": "Clave del campo",
+        "placeholder_campo": "Ej: nombreUsuario",
+        "agrupado": "¿Agrupado?"
     },
     "tipos": {
         "text": "Texto",
@@ -100,8 +109,8 @@
         "tipo_validacion": "Tipo validación",
         "agregar_validacion": "Agregar validación",
         "eliminar_validacion": "Eliminar validación {{numero}}",
-        "requerido":"Es requerido",
-        "minLength":"Longitud mínima",
+        "requerido": "Es requerido",
+        "minLength": "Longitud mínima",
         "maxLength": "Longitud máxima",
         "min": "Valor númerico mínimo",
         "max": "Valor númerico máximo",
